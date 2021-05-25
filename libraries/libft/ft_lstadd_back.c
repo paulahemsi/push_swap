@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 00:40:09 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/02/11 11:10:23 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/25 13:41:30 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	aux = ft_lstlast(*lst);
 	aux->next = new;
+	new->previous = aux;
 }

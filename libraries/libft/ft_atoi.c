@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 02:08:07 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/24 22:16:55 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/25 11:28:00 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,5 @@ double	ft_atoi(const char *nptr)
 		nptr++;
 	}
 	number *= sign;
-	if (number <= INT_MAX && number >= INT_MIN)
-		return (number);
-	return (NULL);
+	return (number);
 }

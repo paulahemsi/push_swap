@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/24 22:17:40 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/25 19:27:33 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,43 +41,51 @@ static void	init_stack_a(int argc, char **argv)
 	int	i;
 
 	i = 1;
-	number = ft_atoi(argv[i]);
+	number = (int)ft_atoi(argv[i]);
 	stack_a = ft_lstnew(number);
+	if (stack_a == NULL)
+		return_error();//! ?inserir esse return_error dentro da própria lstnew?
 	while (i < (argc - 1))
 	{
 		i++;
-		number = ft_atoi(argv[i]);
-		if (!(is_repeated(stack_a, number)))
-			ft_lstadd_back(&stack_a, ft_lstnew(number));
-		else
-		{
+		number = (int)ft_atoi(argv[i]);
+		if (is_repeated(stack_a, number))
 			return_error();
-		}
+		else
+			ft_lstadd_back(&stack_a, ft_lstnew(number));
 	}
-	ft_lstiter(stack_a, &ft_putnbr);
 }
 
-static int	args_arent_int(int argc, char **argv)
+static void	check_if_args_are_integers(int argc, char **argv)
 {
-	int	i;
+	int		i;
+	int		j;
+	double	number;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_atoi(argv[i]) == NULL)
-			return (1);
+		j = 0;
+		if (argv[i][j] == '-')
+			j++;
+		while (argv[i][j])
+		{
+			if (!(ft_isdigit(argv[i][j])))
+				return_error();
+			j++;
+		}
+		number = ft_atoi(argv[i]);
+		if (number > INT_MAX || number < INT_MIN)
+			return_error();
 		i++;
 	}
-	return (0);
 }
 
 int	main (int argc, char **argv)
 {
-	if ((argc == 1) || args_arent_int(argc, argv))
-	{
-		ft_printf("eu");
+	if (argc == 1)
 		return_error();
-	}
+	check_if_args_are_integers(argc, argv);
 	init_stack_a(argc, argv);
 	return (0);
 }
