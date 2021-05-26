@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/25 22:45:25 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/26 11:32:07 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int	main (int argc, char **argv)
 		return_error();
 	check_if_args_are_integers(argc, argv);
 	init_stack_a(argc, argv, &stack_a);
+	lets_sort(&stack_a, &stack_b, (argc - 1));
 	return (0);
 }

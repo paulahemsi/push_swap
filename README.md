@@ -65,3 +65,5 @@ command  | action |
 * 24/05: I made a simple makefile to start, coded handling error functions (non-integers inputs, integer overflow and numbers duplicates) and initialized stack_a with linked lists.
 
 * 25/05: I was having a issue with `0` passing as argument, so I changed the way I was checking if the args are all integers. Swap, push, rotate and reverse rotate are implemented. I choose to change my linked list to make then doubly linked list, so I can keep track of the previous and next numbers
+
+* 26/05: Functions to check if stack_a are full and sorted are implemented and working properly
