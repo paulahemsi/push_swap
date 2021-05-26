@@ -43,23 +43,25 @@ command  | action |
 
 ## step_by_step
 
-* build the [push_swap_simulator](https://phemsi-a.itch.io/push-swap)
+* to better visualize the instructions we have available, I firts built the [push_swap_simulator](https://phemsi-a.itch.io/push-swap)
 
 ![](./study_resources/simulator.gif)
 
 * error handling
+
+* implementation of functions for each instruction ( *swap*, *push*, *rotate*, *reverse rotate* )
 
 ## study_resources
 
 ## work_diary
 
 <details>
-  <summary>Click to expand (:</summary>
+  <summary>Click to expand </summary>
 
 * 22/05: After reading the pdf, I felt that will be god to have a way of visualizing the set of possible instructions I have, so I start to make a simulator prototype in Unity
 
 * 23/05: finished simulator prototype
 
-* 24/05: I made a simple makefile to start, coded handling erros functions(non-integers inputs, integer overflow and numbers duplicates) and initialized stack_a with linked lists.
+* 24/05: I made a simple makefile to start, coded handling error functions (non-integers inputs, integer overflow and numbers duplicates) and initialized stack_a with linked lists.
 
-* 25/05: I was having a issue with `0` passing as argument, so I changed the way I was checking if the args are all integers. Swap, rotate and reverse rotate are implemented. I choose to change my linked list to make then doubly linked list, so I can keep track of the previous and next numbers
+* 25/05: I was having a issue with `0` passing as argument, so I changed the way I was checking if the args are all integers. Swap, push, rotate and reverse rotate are implemented. I choose to change my linked list to make then doubly linked list, so I can keep track of the previous and next numbers

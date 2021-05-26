@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 19:02:18 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/25 13:09:16 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/25 20:14:59 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct s_list
 {
 	int				content;
 	struct s_list	*next;
-	//!parei aqui, precisa implementar esse previous em tudo 
 	struct s_list	*previous;
 }				t_list;
 
