@@ -43,7 +43,7 @@ command  | action |
 
 ## step_by_step
 
-* to better visualize the instructions we have available, I firts built the [push_swap_simulator](https://phemsi-a.itch.io/push-swap)
+* to better visualize the instructions we have available, I first built the [push_swap_simulator](https://phemsi-a.itch.io/push-swap)
 
 ![](./study_resources/simulator.gif)
 
@@ -58,12 +58,15 @@ command  | action |
 <details>
   <summary>Click to expand </summary>
 
-* 22/05: After reading the pdf, I felt that will be god to have a way of visualizing the set of possible instructions I have, so I start to make a simulator prototype in Unity
+* 22/05: After reading the pdf, I felt that it would be good to have a way of visualizing the set of possible instructions that I have, so I started to make a simulator prototype in Unity
 
-* 23/05: finished simulator prototype
+* 23/05: simulator prototype finished 
 
-* 24/05: I made a simple makefile to start, coded handling error functions (non-integers inputs, integer overflow and numbers duplicates) and initialized stack_a with linked lists.
+* 24/05: I made a simple makefile to start, coded handling error functions (non-integer inputs, integer overflow and number duplicates) and initialized stack_a with linked lists.
 
-* 25/05: I was having a issue with `0` passing as argument, so I changed the way I was checking if the args are all integers. Swap, push, rotate and reverse rotate are implemented. I choose to change my linked list to make then doubly linked list, so I can keep track of the previous and next numbers
+* 25/05: I was having an issue with `0` passing as argument, so I changed the way I was checking if the args are all integers. Swap, push, rotate and reverse rotate are implemented. I chose to change my linked list to make them a doubly linked list, so I can keep track of the previous and following numbers
 
 * 26/05: Functions to check if stack_a are full and sorted are implemented and working properly
+
+* 27/05: I added a function to check if a stack is reverse sorted, and implemented a logic to sort the numbers:
+  * define between three numbers (first, second, and last) from stack_a wich one is the smallest and send it to stack_b, placing in the best of three spots (first, second and last). //TODO

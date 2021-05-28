@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/26 11:32:07 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/27 21:34:36 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static void	check_if_args_are_integers(int argc, char **argv)
 	}
 }
 
+//!confirmar opção da lista vir em variável de ambiente
 int	main (int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -89,6 +90,13 @@ int	main (int argc, char **argv)
 		return_error();
 	check_if_args_are_integers(argc, argv);
 	init_stack_a(argc, argv, &stack_a);
+	ft_putendl("stack_a inicio");
+	ft_lstiter(stack_a, &ft_putnbr);
 	lets_sort(&stack_a, &stack_b, (argc - 1));
+	ft_putendl("stack_a final");
+	ft_lstiter(stack_a, &ft_putnbr);
+	ft_putendl("stack_b final");
+	ft_lstiter(stack_b, &ft_putnbr);
+	//TODO free stacks
 	return (0);
 }
