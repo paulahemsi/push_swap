@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_dlstclear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 23:32:38 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/02/11 00:09:04 by phemsi-a         ###   ########.fr       */
+/*   Created: 2021/02/11 12:31:38 by phemsi-a          #+#    #+#             */
+/*   Updated: 2021/05/29 11:08:10 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_dlstclear(t_dlist **lst, void (*del)(int))
 {
-	t_list	*pointer;
+	t_dlist	*aux;
+	t_dlist	*temp;
 
-	if (!(pointer = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	pointer->content = content;
-	pointer->next = NULL;
-	return (pointer);
+	aux = *lst;
+	if (aux == NULL)
+		return ;
+	while (aux != NULL)
+	{
+		del(aux->content);
+		temp = aux->next;
+		free(aux);
+		aux = temp;
+	}
+	*lst = NULL;
 }

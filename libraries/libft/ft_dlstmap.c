@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_dlstmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 23:32:38 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/02/11 00:09:04 by phemsi-a         ###   ########.fr       */
+/*   Created: 2021/02/11 18:48:23 by phemsi-a          #+#    #+#             */
+/*   Updated: 2021/05/29 11:08:40 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_dlist	*ft_dlstmap(t_dlist *lst, int(*f)(int), void (*del)(int))
 {
-	t_list	*pointer;
+	t_dlist	*new_list;
+	t_dlist	*temp;
 
-	if (!(pointer = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	pointer->content = content;
-	pointer->next = NULL;
-	return (pointer);
+	new_list = NULL;
+	while (lst != NULL)
+	{
+		temp = ft_dlstnew(f(lst->content));
+		if (temp == NULL)
+		{
+			if (new_list != NULL)
+			{
+				ft_dlstclear(&new_list, del);
+			}
+			return (NULL);
+		}
+		ft_dlstadd_back(&new_list, temp);
+		lst = lst->next;
+	}
+	return (new_list);
 }

@@ -6,13 +6,13 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:48:23 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/24 21:47:06 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/02/14 02:26:11 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, int(*f)(int), void (*del)(int))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_list;
 	t_list	*temp;

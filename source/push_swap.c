@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/29 10:05:56 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/29 12:47:06 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	return_error(void)
 	exit(1);
 }
 
-static int	is_repeated(t_list *lst, int number)
+static int	is_repeated(t_dlist *lst, int number)
 {
-	t_list	*aux;
+	t_dlist	*aux;
 
 	if (lst == NULL)
 		return (0);
@@ -34,14 +34,14 @@ static int	is_repeated(t_list *lst, int number)
 	return (0);
 }
 
-static void	init_stack_a(int argc, char **argv, t_list	**stack_a)
+static void	init_stack_a(int argc, char **argv, t_dlist	**stack_a)
 {
 	int	number;
 	int	i;
 
 	i = 1;
 	number = (int)ft_atoi(argv[i]);
-	*stack_a = ft_lstnew(number);
+	*stack_a = ft_dlstnew(number);
 	while (i < (argc - 1))
 	{
 		i++;
@@ -49,7 +49,7 @@ static void	init_stack_a(int argc, char **argv, t_list	**stack_a)
 		if (is_repeated(*stack_a, number))
 			return_error();
 		else
-			ft_lstadd_back(stack_a, ft_lstnew(number));
+			ft_dlstadd_back(stack_a, ft_dlstnew(number));
 	}
 }
 
@@ -81,22 +81,29 @@ static void	check_if_args_are_integers(int argc, char **argv)
 //!confirmar opção da lista vir em variável de ambiente
 int	main (int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_dlist	*stack_a;
+	t_dlist	*stack_b;
+	t_list	*instr;
 
 	stack_a = NULL;
 	stack_b = NULL;
+	instr = NULL;
 	if (argc == 1)
 		return_error();
 	check_if_args_are_integers(argc, argv);
 	init_stack_a(argc, argv, &stack_a);
 	ft_putendl("stack_a inicio");
-	ft_lstiter(stack_a, &ft_putnbr);
-	lets_sort(&stack_a, &stack_b, (argc - 1));
+	ft_dlstiter(stack_a, &ft_putnbr);
+	lets_sort(&stack_a, &stack_b, (argc - 1), &instr);
 	ft_putendl("stack_a final");
-	ft_lstiter(stack_a, &ft_putnbr);
+	ft_dlstiter(stack_a, &ft_putnbr);
 	ft_putendl("stack_b final");
-	ft_lstiter(stack_b, &ft_putnbr);
+	ft_dlstiter(stack_b, &ft_putnbr);
+	ft_putendl("instructions");
+	ft_lstiter(instr, &ft_putstr);
+	ft_putendl("instructions size");
+	ft_putnbr(ft_lstsize(instr));
+	ft_putchar('\n');
 	//TODO free stacks
 	return (0);
 }

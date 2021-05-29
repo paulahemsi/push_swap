@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 19:02:18 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/28 09:27:56 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/29 12:40:32 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,18 @@ typedef struct s_get_next_line
 	int			read_return;
 }				t_gnl;
 
-typedef struct s_list
+typedef	struct	s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
+
+typedef struct s_dlist
 {
 	int				content;
-	struct s_list	*next;
-	struct s_list	*previous;
-}				t_list;
+	struct s_dlist	*next;
+	struct s_dlist	*previous;
+}				t_dlist;
 
 typedef struct s_itoa_hex
 {
@@ -117,20 +123,31 @@ void			ft_putnbr_fd(int n, int fd);
 /*
 **  BONUS
 */
-t_list			*ft_lstnew(int content);
+t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 int				ft_lstsize(t_list *lst);
 t_list			*ft_lstlast(t_list *lst);
 void			ft_lstadd_back(t_list **lst, t_list *new);
-void			ft_lstdelone(t_list *lst, void (*del)(int));
-void			ft_lstclear(t_list **lst, void (*del)(int));
-void			ft_lstiter(t_list *lst, void (*f)(int));
-void			ft_lstiter_reverse(t_list *lst, void (*f)(int));
-t_list			*ft_lstmap(t_list *lst, int(*f)(int),
-					void (*del)(int));
+void			ft_lstdelone(t_list *lst, void (*del)(void
+*));
+void			ft_lstclear(t_list **lst, void (*del)(void *));
+void			ft_lstiter(t_list *lst, void (*f)(const char *));
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
+				void (*del)(void *));
 /*
 **  EXTRAS
 */
+t_dlist			*ft_dlstnew(int content);
+void			ft_dlstadd_front(t_dlist **lst, t_dlist *new);
+int				ft_dlstsize(t_dlist *lst);
+t_dlist			*ft_dlstlast(t_dlist *lst);
+void			ft_dlstadd_back(t_dlist **lst, t_dlist *new);
+void			ft_dlstdelone(t_dlist *lst, void (*del)(int));
+void			ft_dlstclear(t_dlist **lst, void (*del)(int));
+void			ft_dlstiter(t_dlist *lst, void (*f)(int));
+void			ft_dlstiter_reverse(t_dlist *lst, void (*f)(int));
+t_dlist			*ft_dlstmap(t_dlist *lst, int(*f)(int),
+					void (*del)(int));
 void			ft_strclr(char *s);
 int				ft_strequ(char const *s1, char const *s2);
 int				ft_strnequ(char const *s1, char const *s2, size_t n);

@@ -6,16 +6,21 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:05:17 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/29 10:05:54 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/29 12:41:08 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap(t_list **stack)
+void	add_instruction(t_list **instr, char *content)
 {
-	t_list	*first;
-	t_list	*second;
+	ft_lstadd_back(instr, ft_lstnew(content));
+}
+
+void	swap(t_dlist **stack, t_list **instr, char id)
+{
+	t_dlist	*first;
+	t_dlist	*second;
 
 	if (*stack == NULL)
 		return ;
@@ -30,12 +35,16 @@ void	swap(t_list **stack)
 	second->next = first;
 	second->previous = NULL;
 	*stack = second;
+	if (id == 'a')
+		add_instruction(instr, "sa\n");
+	else
+		add_instruction(instr, "sb\n");
 }
 
-void	push(t_list **origin_stack, t_list **dest_stack)
+void	push(t_dlist **origin_stack, t_dlist **dest_stack, t_list **instr, char id)
 {
-	t_list	*origin;
-	t_list	*dest;
+	t_dlist	*origin;
+	t_dlist	*dest;
 
 	if (*origin_stack == NULL)
 		return ;
@@ -54,20 +63,28 @@ void	push(t_list **origin_stack, t_list **dest_stack)
 		dest->next = NULL;
 		dest->previous = NULL;
 		*dest_stack = dest;
+		if (id == 'a')
+			add_instruction(instr, "pa\n");
+		else
+			add_instruction(instr, "pb\n");
 		return ;
 	}
 	dest->previous = origin;
 	origin->next = dest;
 	*dest_stack = dest->previous;
+	if (id == 'a')
+		add_instruction(instr, "pa\n");
+	else
+		add_instruction(instr, "pb\n");
 }
 
 /*
 ** shift_up
 */
-void	rotate(t_list **stack)
+void	rotate(t_dlist **stack, t_list **instr, char id)
 {
-	t_list	*first;
-	t_list	*last;
+	t_dlist	*first;
+	t_dlist	*last;
 
 	if (*stack == NULL)
 		return ;
@@ -80,15 +97,19 @@ void	rotate(t_list **stack)
 	last->next = first;
 	first->previous = last;
 	first->next = NULL;
+	if (id == 'a')
+		add_instruction(instr, "ra\n");
+	else
+		add_instruction(instr, "rb\n");
 }
 
 /*
 ** shift_down
 */
-void	reverse_rotate(t_list **stack)
+void	reverse_rotate(t_dlist **stack, t_list **instr, char id)
 {
-	t_list	*first;
-	t_list	*last;
+	t_dlist	*first;
+	t_dlist	*last;
 
 	if (*stack == NULL)
 		return ;
@@ -101,4 +122,8 @@ void	reverse_rotate(t_list **stack)
 	last->previous->next = NULL;
 	last->previous = NULL;
 	*stack = last;
+	if (id == 'a')
+		add_instruction(instr, "rra\n");
+	else
+		add_instruction(instr, "rrb\n");
 }

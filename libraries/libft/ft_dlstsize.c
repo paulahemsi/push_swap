@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_dlstsize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 23:32:38 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/02/11 00:09:04 by phemsi-a         ###   ########.fr       */
+/*   Created: 2021/02/11 00:28:03 by phemsi-a          #+#    #+#             */
+/*   Updated: 2021/05/29 11:07:12 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_dlstsize(t_dlist *lst)
 {
-	t_list	*pointer;
+	t_dlist	*aux;
+	int		size;
 
-	if (!(pointer = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	pointer->content = content;
-	pointer->next = NULL;
-	return (pointer);
+	aux = lst;
+	size = 0;
+	while (aux != NULL)
+	{
+		size++;
+		aux = aux->next;
+	}
+	return (size);
 }
