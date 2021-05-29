@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:48:23 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/29 11:08:40 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/29 12:58:31 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_dlist	*ft_dlstmap(t_dlist *lst, int(*f)(int), void (*del)(int))
 		{
 			if (new_list != NULL)
 			{
-				ft_dlstclear(&new_list, del);
+				ft_dlstclear(&new_list);
 			}
 			return (NULL);
 		}

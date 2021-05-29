@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/29 12:47:06 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/29 13:08:53 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,18 +92,10 @@ int	main (int argc, char **argv)
 		return_error();
 	check_if_args_are_integers(argc, argv);
 	init_stack_a(argc, argv, &stack_a);
-	ft_putendl("stack_a inicio");
-	ft_dlstiter(stack_a, &ft_putnbr);
 	lets_sort(&stack_a, &stack_b, (argc - 1), &instr);
-	ft_putendl("stack_a final");
-	ft_dlstiter(stack_a, &ft_putnbr);
-	ft_putendl("stack_b final");
-	ft_dlstiter(stack_b, &ft_putnbr);
-	ft_putendl("instructions");
 	ft_lstiter(instr, &ft_putstr);
-	ft_putendl("instructions size");
-	ft_putnbr(ft_lstsize(instr));
-	ft_putchar('\n');
-	//TODO free stacks
+	ft_dlstclear(&stack_a);
+	ft_dlstclear(&stack_b);
+	ft_lstclear(&instr, &free);
 	return (0);
 }

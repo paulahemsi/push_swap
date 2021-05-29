@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 12:31:38 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/02/12 21:37:23 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/29 13:06:59 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		return ;
 	while (aux != NULL)
 	{
-		del(aux->content);
 		temp = aux->next;
-		free(aux);
+		del(aux);
 		aux = temp;
 	}
 	*lst = NULL;

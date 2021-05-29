@@ -6,13 +6,13 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 12:31:38 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/29 11:08:10 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/29 12:53:08 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dlstclear(t_dlist **lst, void (*del)(int))
+void	ft_dlstclear(t_dlist **lst)
 {
 	t_dlist	*aux;
 	t_dlist	*temp;
@@ -22,7 +22,6 @@ void	ft_dlstclear(t_dlist **lst, void (*del)(int))
 		return ;
 	while (aux != NULL)
 	{
-		del(aux->content);
 		temp = aux->next;
 		free(aux);
 		aux = temp;
