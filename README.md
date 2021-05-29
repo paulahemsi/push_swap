@@ -69,4 +69,10 @@ command  | action |
 * 26/05: Functions to check if stack_a are full and sorted are implemented and working properly
 
 * 27/05: I added a function to check if a stack is reverse sorted, and implemented a logic to sort the numbers:
-  * define between three numbers (first, second, and last) from stack_a wich one is the smallest and send it to stack_b, placing in the best of three spots (first, second and last). //TODO
+  * check if stack_a is sorted and if stack_b is reverse sorted, to decide what steps to make
+  * define between three numbers (first, second, and last) from stack_a wich one is the smallest and send it to stack_b, placing in the best of three spots (first, second and last)
+  * when stack_a is sorted and stack_b is reverse sorted, push numbers from b to a
+
+* 28/05: Trying to find a bug, I discovered a problem in swap function with the previous pointer management
+
+* 29/05: The program is being able to sort a small amount of numbers without any issues (I tested until)

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:05:17 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/27 20:08:50 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/29 10:05:54 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	swap(t_list **stack)
 		return ;
 	first->next = second->next;
 	first->previous = second;
+	if (second->next)
+		second->next->previous = first;
 	second->next = first;
 	second->previous = NULL;
 	*stack = second;

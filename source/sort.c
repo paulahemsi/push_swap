@@ -6,14 +6,11 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 11:15:23 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/27 21:43:30 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/29 10:05:13 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-
-
 
 // static void	debug(t_list **stack_a, t_list **stack_b)
 // {
@@ -22,7 +19,6 @@
 // 	ft_putendl("stack_b");
 // 	ft_lstiter(*stack_b, &ft_putnbr);
 // }
-
 
 static int	is_sorted(t_list *stack)
 {
@@ -35,10 +31,11 @@ static int	is_sorted(t_list *stack)
 	return (1);
 }
 
-static int	is_reverse_sorted(t_list *stack)
+static int	is_reverse_sorted(t_list *stack)//, int controler)
 {
+	
 	while (stack->next != NULL)
-		stack = stack->next;
+		return (1);
 	while (stack->previous != NULL)
 	{
 		if (stack->content > stack->previous->content)
@@ -80,17 +77,18 @@ void	order_b(t_list **stack_b)
 	int	last;
 	t_list	*stack;
 
-	//ft_putendl("entrada order_b");
-	//debug(stack_b, stack_b);
 	stack = *stack_b;
-	if (stack->next == NULL)
+	if (stack == NULL || stack->next == NULL)
 		return ;
 	if (stack->next->next == NULL)
+	{
+		
 		if (stack->content < stack->next->content)
 		{
 			swap(stack_b);
 			return ;
 		}
+	}
 	define_numbers(&first, &second, &last, stack);
 	if (first < second)
 	{
@@ -99,8 +97,6 @@ void	order_b(t_list **stack_b)
 		else
 			swap(stack_b);
 	}
-	//ft_putendl("saída order_b");
-	//debug(stack_b, stack_b);
 }
 
 
@@ -109,13 +105,7 @@ void	lets_sort(t_list **stack_a, t_list **stack_b, int total_numbers)
 	int	first;
 	int	second;
 	int	last;
-	static int	controler;
 
-	//ft_putendl("entrada");
-	//debug(stack_a, stack_b);
-	
-	//if (is_reverse_sorted(*stack_a))
-		//ft_putendl("reverse sorted");
 	if (is_sorted(*stack_a))
 	{
 		if (is_full(*stack_a, total_numbers))
@@ -123,7 +113,6 @@ void	lets_sort(t_list **stack_a, t_list **stack_b, int total_numbers)
 		if (is_reverse_sorted(*stack_b))
 			push(stack_b, stack_a);
 		order_b(stack_b);
-		//TODO organizar o b
 	}
 	else
 	{
@@ -134,18 +123,6 @@ void	lets_sort(t_list **stack_a, t_list **stack_b, int total_numbers)
 			swap(stack_a);
 		push(stack_a, stack_b);
 		order_b(stack_b);
-		
 	}
-	controler++;
-	//ft_printf("controler: %i\n", controler);
-	//ft_putendl("saída");
-	//debug(stack_a, stack_b);
-	ft_printf("-------------------------------stack_a na tentativa %i de organizar------------------------------\n", controler - 1);
-	ft_lstiter(*stack_a, &ft_putnbr);
-	ft_putendl("stack_b final");
-	ft_lstiter(*stack_b, &ft_putnbr);
-	ft_printf("----------------------------------------------------------------------------------------------------------------\n");
-	if (controler > 20)
-		return;
 	lets_sort(stack_a, stack_b, total_numbers);
 }

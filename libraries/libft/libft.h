@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 19:02:18 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/25 20:14:59 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/28 09:27:56 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstdelone(t_list *lst, void (*del)(int));
 void			ft_lstclear(t_list **lst, void (*del)(int));
 void			ft_lstiter(t_list *lst, void (*f)(int));
+void			ft_lstiter_reverse(t_list *lst, void (*f)(int));
 t_list			*ft_lstmap(t_list *lst, int(*f)(int),
 					void (*del)(int));
 /*
