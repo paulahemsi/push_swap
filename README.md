@@ -75,4 +75,4 @@ command  | action |
 
 * 28/05: Trying to find a bug, I discovered a problem in swap function with the previous pointer management
 
-* 29/05: The program is being able to sort a small amount of numbers without any issues (I tested until)
+* 29/05: The program is being able to sort any amount of numbers without any issues, but it is not optimized and bigger numbers (>100) are taking more steps 
