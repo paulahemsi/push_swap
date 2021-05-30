@@ -51,7 +51,11 @@ command  | action |
 
 * implementation of functions for each instruction ( *swap*, *push*, *rotate*, *reverse rotate* )
 
+
 ## study_resources
+
+* [how big_O notation works– explained with cake](https://www.freecodecamp.org/news/big-o-notation/)
+* [the quicksort sorting algorithm video](https://www.youtube.com/watch?v=uXBnyYuwPe8)
 
 ## work_diary
 
@@ -75,4 +79,6 @@ command  | action |
 
 * 28/05: Trying to find a bug, I discovered a problem in swap function with the previous pointer management
 
-* 29/05: The program is being able to sort any amount of numbers without any issues, but it is not optimized and bigger numbers (>100) are taking more steps 
+* 29/05: The program is being able to sort any amount of numbers without any issues, but it is not optimized and bigger numbers (>100) are taking too many steps
+
+* 30/05: In order to optimize the code, I studied sorting algorithms and started to code a function that make an ordered array with the numbers list

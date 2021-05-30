@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/29 13:35:32 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/30 10:07:43 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,32 @@ static void	check_if_args_are_integers(int argc, char **argv)
 	}
 }
 
-//!confirmar opção da lista vir em variável de ambiente
+static void	bubble_sort(int **ordered_array, int total)
+{
+	int	
+}
+
+static void	fill_ordered_array(t_dlist *stack_a, int total)
+{
+	int	*ordered_array;
+	int	i;
+
+	ordered_array = (int *)malloc((total + 1) * sizeof(int));
+	if (!ordered_array)
+		return_error();
+	ordered_array[total] = NULL;
+	i = 0;
+	while (i < total)
+	{
+		ordered_array[i] = stack_a->content;
+		i++;
+		stack_a = stack_a->next;
+	}
+	bubble_sort(&ordered_array, total);
+	
+}
+
+//TODO opção da lista vir em variável de ambiente
 int	main (int argc, char **argv)
 {
 	t_dlist	*stack_a;
@@ -92,6 +117,7 @@ int	main (int argc, char **argv)
 		return_error();
 	check_if_args_are_integers(argc, argv);
 	init_stack_a(argc, argv, &stack_a);
+	fill_ordered_array(stack_a, (argc - 1));
 	lets_sort(&stack_a, &stack_b, (argc - 1), &instr);
 	ft_lstiter(instr, &ft_putstr);
 	ft_putnbr(ft_lstsize(instr));

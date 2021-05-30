@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 11:15:23 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/29 11:56:02 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/30 09:42:22 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,47 +19,6 @@
 // 	ft_putendl("stack_b");
 // 	ft_dlstiter(*stack_b, &ft_putnbr);
 // }
-
-static int	is_sorted(t_dlist *stack)
-{
-	while (stack->next != NULL)
-	{
-		if (stack->content > stack->next->content)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
-static int	is_reverse_sorted(t_dlist *stack)
-{
-	
-	while (stack->next != NULL)
-		return (1);
-	while (stack->previous != NULL)
-	{
-		if (stack->content > stack->previous->content)
-			return (0);
-		stack = stack->previous;
-	}
-	return (1);
-}
-
-static int	is_full(t_dlist *stack, int total_numbers)
-{
-	int	numbers_in_stack;
-
-	numbers_in_stack = 0;
-	while (stack->next != NULL)
-	{
-		numbers_in_stack++;
-		stack = stack->next;
-	}
-	numbers_in_stack++;
-	if (numbers_in_stack == total_numbers)
-		return (1);
-	return (0);
-}
 
 static void	define_numbers(int *first, int *second, int *last, t_dlist *stack)
 {
@@ -82,7 +41,6 @@ static void	order_b(t_dlist **stack_b, t_list **instr)
 		return ;
 	if (stack->next->next == NULL)
 	{
-		
 		if (stack->content < stack->next->content)
 		{
 			swap(stack_b, instr, 'b');
@@ -96,6 +54,7 @@ static void	order_b(t_dlist **stack_b, t_list **instr)
 			rotate(stack_b, instr, 'b');
 		else
 			swap(stack_b, instr, 'b');
+		//TODO dá pra incluir o reverse_rotate aqui tb
 	}
 }
 
@@ -110,7 +69,7 @@ void	lets_sort(t_dlist **stack_a, t_dlist **stack_b, int total_numbers, t_list *
 	{
 		if (is_full(*stack_a, total_numbers))
 			return ;
-		if (is_reverse_sorted(*stack_b))
+		if (is_reverse_sorted(*stack_b)) //TODO não precisa estar totalmente reverse sorted pra dar push pro a
 			push(stack_b, stack_a, instr, 'a');
 		order_b(stack_b, instr);
 	}
