@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/30 10:07:43 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/31 13:06:23 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,43 @@ static void	check_if_args_are_integers(int argc, char **argv)
 	}
 }
 
-static void	bubble_sort(int **ordered_array, int total)
+static int partition(int *ordered_array, int left, int right)
 {
-	int	
+	int	i;
+	int	j;
+	int	pivot;
+	int	temp;
+
+	pivot = ordered_array[left];
+	i = left;
+	j = left + 1;
+	while (j <= right)
+	{
+		if (ordered_array[j] < pivot)
+		{
+			i++;
+			temp = ordered_array[j];
+			ordered_array[j] = ordered_array[i]; 
+			ordered_array[i] = temp;
+		}
+		j++;
+	}
+	temp = ordered_array[left];
+	ordered_array[left] = ordered_array[i]; 
+	ordered_array[i] = temp;
+	return (i);
+}
+
+static void	quick_sort(int *ordered_array, int left, int right)
+{
+	int	index_pivot;
+
+	if (left < right)
+	{
+		index_pivot = partition(ordered_array, left, right);
+		quick_sort(ordered_array, left, index_pivot - 1);
+		quick_sort(ordered_array, index_pivot + 1, right);
+	}
 }
 
 static void	fill_ordered_array(t_dlist *stack_a, int total)
@@ -88,10 +122,9 @@ static void	fill_ordered_array(t_dlist *stack_a, int total)
 	int	*ordered_array;
 	int	i;
 
-	ordered_array = (int *)malloc((total + 1) * sizeof(int));
+	ordered_array = (int *)malloc(total * sizeof(int));
 	if (!ordered_array)
 		return_error();
-	ordered_array[total] = NULL;
 	i = 0;
 	while (i < total)
 	{
@@ -99,8 +132,23 @@ static void	fill_ordered_array(t_dlist *stack_a, int total)
 		i++;
 		stack_a = stack_a->next;
 	}
-	bubble_sort(&ordered_array, total);
-	
+	i = 0;
+	ft_putendl("antes do quick sort:");
+	while (i < total)
+	{
+		ft_printf("%i ", ordered_array[i]);
+		i++;
+	}
+	ft_putchar('\n');
+	quick_sort(ordered_array, 0, (total - 1));
+	i = 0;
+	ft_putendl("depois do quick sort:");
+	while (i < total)
+	{
+		ft_printf("%i ", ordered_array[i]);
+		i++;
+	}
+	ft_putchar('\n');
 }
 
 //TODO opção da lista vir em variável de ambiente

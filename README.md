@@ -51,11 +51,16 @@ command  | action |
 
 * implementation of functions for each instruction ( *swap*, *push*, *rotate*, *reverse rotate* )
 
+* implementation of my first intuitive sorting algorithm
+
+* studing big O notation and sorting algorithms
+
 
 ## study_resources
 
 * [how big_O notation works– explained with cake](https://www.freecodecamp.org/news/big-o-notation/)
 * [the quicksort sorting algorithm video](https://www.youtube.com/watch?v=uXBnyYuwPe8)
+* [quick sort -ptbr](https://joaoarthurbm.github.io/eda/posts/quick-sort/)
 
 ## work_diary
 
@@ -82,3 +87,5 @@ command  | action |
 * 29/05: The program is being able to sort any amount of numbers without any issues, but it is not optimized and bigger numbers (>100) are taking too many steps
 
 * 30/05: In order to optimize the code, I studied sorting algorithms and started to code a function that make an ordered array with the numbers list
+
+* 31/05: I implemented a quick sort function to order the array that will be used as reference
