@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/31 14:20:17 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/31 15:09:33 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	check_if_args_are_integers(int argc, char **argv)
 	}
 }
 
-static void	fill_ordered_array(t_dlist *stack_a, int total)
+static int	*fill_ordered_array(t_dlist *stack_a, int total)
 {
 	int	*ordered_array;
 	int	i;
@@ -88,30 +88,26 @@ static void	fill_ordered_array(t_dlist *stack_a, int total)
 		stack_a = stack_a->next;
 	}
 	quick_sort(ordered_array, 0, (total - 1));
+	return (ordered_array);
 }
 
 //TODO opção da lista vir em variável de ambiente
 int	main (int argc, char **argv)
 {
-	t_dlist	*stack_a;
-	t_dlist	*stack_b;
-	t_list	*instr;
+	t_stack	stack;
+	t_aux	aux;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	instr = NULL;
+	stack.a = NULL;
+	stack.b = NULL;
+	aux.instr = NULL;
 	if (argc == 1)
 		return_error();
+	aux.total_num = argc - 1;
 	check_if_args_are_integers(argc, argv);
-	init_stack_a(argc, argv, &stack_a);
-	fill_ordered_array(stack_a, (argc - 1));
-	lets_sort(&stack_a, &stack_b, (argc - 1), &instr);
-	ft_lstiter(instr, &ft_putstr);
-	//ft_putnbr(ft_lstsize(instr));
-	//ft_putchar('\n');
-	//ft_dlstiter(stack_a, &ft_putnbr);
-	ft_dlstclear(&stack_a);
-	ft_dlstclear(&stack_b);
-	ft_lstclear(&instr, &free);
+	init_stack_a(argc, argv, &stack.a);
+	aux.ordered_array = fill_ordered_array(stack.a, aux.total_num);
+	lets_sort(&stack.a, &stack.b, &aux);
+	ft_lstiter(aux.instr, &ft_putstr);
+	clear(&stack, &aux);
 	return (0);
 }
