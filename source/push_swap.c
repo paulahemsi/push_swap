@@ -6,17 +6,11 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/31 13:06:23 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/31 14:20:17 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	return_error(void)
-{
-	ft_putendl("Error");
-	exit(1);
-}
 
 static int	is_repeated(t_dlist *lst, int number)
 {
@@ -78,45 +72,6 @@ static void	check_if_args_are_integers(int argc, char **argv)
 	}
 }
 
-static int partition(int *ordered_array, int left, int right)
-{
-	int	i;
-	int	j;
-	int	pivot;
-	int	temp;
-
-	pivot = ordered_array[left];
-	i = left;
-	j = left + 1;
-	while (j <= right)
-	{
-		if (ordered_array[j] < pivot)
-		{
-			i++;
-			temp = ordered_array[j];
-			ordered_array[j] = ordered_array[i]; 
-			ordered_array[i] = temp;
-		}
-		j++;
-	}
-	temp = ordered_array[left];
-	ordered_array[left] = ordered_array[i]; 
-	ordered_array[i] = temp;
-	return (i);
-}
-
-static void	quick_sort(int *ordered_array, int left, int right)
-{
-	int	index_pivot;
-
-	if (left < right)
-	{
-		index_pivot = partition(ordered_array, left, right);
-		quick_sort(ordered_array, left, index_pivot - 1);
-		quick_sort(ordered_array, index_pivot + 1, right);
-	}
-}
-
 static void	fill_ordered_array(t_dlist *stack_a, int total)
 {
 	int	*ordered_array;
@@ -132,23 +87,7 @@ static void	fill_ordered_array(t_dlist *stack_a, int total)
 		i++;
 		stack_a = stack_a->next;
 	}
-	i = 0;
-	ft_putendl("antes do quick sort:");
-	while (i < total)
-	{
-		ft_printf("%i ", ordered_array[i]);
-		i++;
-	}
-	ft_putchar('\n');
 	quick_sort(ordered_array, 0, (total - 1));
-	i = 0;
-	ft_putendl("depois do quick sort:");
-	while (i < total)
-	{
-		ft_printf("%i ", ordered_array[i]);
-		i++;
-	}
-	ft_putchar('\n');
 }
 
 //TODO opção da lista vir em variável de ambiente
@@ -168,7 +107,9 @@ int	main (int argc, char **argv)
 	fill_ordered_array(stack_a, (argc - 1));
 	lets_sort(&stack_a, &stack_b, (argc - 1), &instr);
 	ft_lstiter(instr, &ft_putstr);
-	ft_putnbr(ft_lstsize(instr));
+	//ft_putnbr(ft_lstsize(instr));
+	//ft_putchar('\n');
+	//ft_dlstiter(stack_a, &ft_putnbr);
 	ft_dlstclear(&stack_a);
 	ft_dlstclear(&stack_b);
 	ft_lstclear(&instr, &free);

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 11:06:40 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/30 09:19:28 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/31 13:16:51 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ void	lets_sort(t_dlist **stack_a, t_dlist **stack_b, int total_numbers, t_list *
 int		is_sorted(t_dlist *stack);
 int		is_reverse_sorted(t_dlist *stack);
 int		is_full(t_dlist *stack, int total_numbers);
+/*
+** aux
+*/
+void	quick_sort(int *array, int left, int right);
 
 #endif

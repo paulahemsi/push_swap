@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/05 21:18:02 by phemsi-a          #+#    #+#              #
-#    Updated: 2021/05/30 09:20:38 by phemsi-a         ###   ########.fr        #
+#    Updated: 2021/05/31 14:19:02 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ SRC = ./source/
 #RENDER = $(SRC)render_cub/
 #SYSTEM = $(SRC)system/
 
-FILES = $(SRC)push_swap.c $(SRC)operations.c $(SRC)sort.c $(SRC)sort_aux.c
-OBJECTS = push_swap.o operations.o sort.o sort_aux.o
+FILES = $(SRC)push_swap.c $(SRC)operations.c $(SRC)sort.c $(SRC)sort_aux.c $(SRC)quick_sort.c $(SRC)error.c
+OBJECTS = push_swap.o operations.o sort.o sort_aux.o quick_sort.o error.o
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
