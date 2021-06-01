@@ -55,6 +55,8 @@ command  | action |
 
 * studing big O notation and sorting algorithms
 
+* implementation of a sorted array to have as reference
+
 
 ## study_resources
 
@@ -82,10 +84,10 @@ command  | action |
   * define between three numbers (first, second, and last) from stack_a wich one is the smallest and send it to stack_b, placing in the best of three spots (first, second and last)
   * when stack_a is sorted and stack_b is reverse sorted, push numbers from b to a
 
-* 28/05: Trying to find a bug, I discovered a problem in swap function with the previous pointer management
+* 28/05: While trying to find a bug, I discovered a problem in swap function with the previous pointer management and fixed it
 
-* 29/05: The program is being able to sort any amount of numbers without any issues, but it is not optimized and bigger numbers (>100) are taking too many steps
+* 29/05: The program is being able to sort any amount of numbers without any issues, but it is not optimized, therefore bigger numbers (>100) are taking too many steps
 
-* 30/05: In order to optimize the code, I studied sorting algorithms and started to code a function that make an ordered array with the numbers list
+* 30/05: In order to optimize the code, I studied sorting algorithms and started to code a function that makes an ordered array from the number list
 
-* 31/05: I implemented a quick sort function to order the array that will be used as reference
+* 31/05: I  organized my variables inside structs and implemented a quick sort function to order the array that will be used as reference. The rest of the day was spent trying to make this new sorting try, passing to stack_b the lower half of the numbers

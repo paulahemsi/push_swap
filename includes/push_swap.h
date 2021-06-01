@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 11:06:40 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/31 15:12:43 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/31 17:10:00 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,17 @@ typedef struct	s_stack
 typedef struct	s_aux
 {
 	int			*ordered_array;
-	int			total_num;
 	t_list		*instr;
+	int			total_num;
+	int			middle_num;
 }				t_aux;
 
+typedef struct	s_num
+{
+	int			first;
+	int			second;
+	int			last;
+}				t_num;
 /*
 ** system
 */

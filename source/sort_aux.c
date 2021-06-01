@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 09:16:13 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/30 09:17:31 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/05/31 21:56:02 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_reverse_sorted(t_dlist *stack)
 {
 	
 	while (stack->next != NULL)
-		return (1);
+		stack = stack->next;
 	while (stack->previous != NULL)
 	{
 		if (stack->content > stack->previous->content)
