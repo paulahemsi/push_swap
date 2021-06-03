@@ -91,3 +91,5 @@ command  | action |
 * 30/05: In order to optimize the code, I studied sorting algorithms and started to code a function that makes an ordered array from the number list
 
 * 31/05: I  organized my variables inside structs and implemented a quick sort function to order the array that will be used as reference. The rest of the day was spent trying to make this new sorting try, passing to stack_b the lower half of the numbers
+
+* 02/06: hello ~~darkness~~ procrastination my old friend
