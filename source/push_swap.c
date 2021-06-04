@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/31 16:43:47 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/03 21:15:52 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ int	main (int argc, char **argv)
 	aux.ordered_array = fill_ordered_array(stack.a, aux.total_num);
 	aux.middle_num = aux.ordered_array[(aux.total_num / 2)];
 	ft_printf("middle number: %i\n", aux.middle_num);
+	//push(&stack.a, &stack.b, &aux.instr, 'b');
+	//push(&stack.a, &stack.b, &aux.instr, 'b');
+	
 	lets_sort(&stack.a, &stack.b, &aux);
 	ft_lstiter(aux.instr, &ft_putstr);
 	ft_printf("--------total instructions: %i\n--------total numbers: %i\n", ft_lstsize(aux.instr), aux.total_num);

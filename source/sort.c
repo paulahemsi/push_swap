@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 11:15:23 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/03 19:37:29 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/04 00:37:17 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ static void	order_a(t_dlist **stack_a, t_list **instr)
 			return ;
 		}
 	}
+	
 	define_numbers(&first, &second, &last, stack);
 	if (first > second)
 	{
@@ -97,7 +98,7 @@ static void	order_a(t_dlist **stack_a, t_list **instr)
 		else
 			swap(stack_a, instr, 'a');
 	}
-	if (!(is_sorted(stack)))
+	else
 		reverse_rotate(stack_a, instr, 'a');
 }
 
@@ -146,7 +147,7 @@ static int is_time_to_go_back(t_dlist *stack_b, t_dlist *stack_a, t_aux *aux)
 
 static int	any_small_in_stack_a(t_dlist *stack_a, t_aux *aux)
 {
-	while (stack_a->next != NULL)
+	while (stack_a != NULL)
 	{
 		if (stack_a->content < aux->middle_num)
 			return (1);
@@ -160,7 +161,7 @@ void	lets_sort(t_dlist **stack_a, t_dlist **stack_b, t_aux *aux)
 	t_num	num;
 	int		rr_is_quicker;
 	static	int controler;
-
+	
 	if (is_sorted(*stack_a))
 	{
 		if (is_full(*stack_a, aux->total_num))
@@ -183,9 +184,20 @@ void	lets_sort(t_dlist **stack_a, t_dlist **stack_b, t_aux *aux)
 			if (smaller_than_middle(&num, *stack_a, aux))
 			{
 				if ((num.last < num.first) && (num.last < num.second))
+				{
+					ft_printf("reverse_rotate_a\n");
 					reverse_rotate(stack_a, &aux->instr, 'a');
+				}
 				else if (num.second < num.first)
+				{
+					ft_printf("swap_a\n");
 					swap(stack_a, &aux->instr, 'a');
+				}
+				if (is_sorted(*stack_a))
+				{
+					if (is_full(*stack_a, aux->total_num))
+						return ;
+				}
 				push(stack_a, stack_b, &aux->instr, 'b');
 				order_a(stack_a, &aux->instr);
 				order_b(stack_b, &aux->instr);

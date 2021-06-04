@@ -92,4 +92,6 @@ command  | action |
 
 * 31/05: I  organized my variables inside structs and implemented a quick sort function to order the array that will be used as reference. The rest of the day was spent trying to make this new sorting try, passing to stack_b the lower half of the numbers
 
-* 02/06: hello ~~darkness~~ procrastination my old friend
+* 01/06 - 02/06: hello ~~darkness~~ procrastination my old friend
+
+* 03/07: Trying to get small chunks at a time, I started to debug the new messy code with small numbers, step by step, correcting some weird parts and optimizing it a bit. Tomorrow I need to debug a set of numbers that the code is unable to sort (`-44 -12 86 -85 -60`).

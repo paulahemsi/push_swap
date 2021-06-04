@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 09:16:13 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/31 21:56:02 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:41:36 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,30 @@
 
 int	is_sorted(t_dlist *stack)
 {
-	while (stack->next != NULL)
+	if (stack)
 	{
-		if (stack->content > stack->next->content)
-			return (0);
-		stack = stack->next;
+		while (stack->next != NULL)
+		{
+			if (stack->content > stack->next->content)
+				return (0);
+			stack = stack->next;
+		}
 	}
 	return (1);
 }
 
 int	is_reverse_sorted(t_dlist *stack)
 {
-	
-	while (stack->next != NULL)
-		stack = stack->next;
-	while (stack->previous != NULL)
+	if (stack)
 	{
-		if (stack->content > stack->previous->content)
-			return (0);
-		stack = stack->previous;
+		while (stack->next != NULL)
+			stack = stack->next;
+		while (stack->previous != NULL)
+		{
+			if (stack->content > stack->previous->content)
+				return (0);
+			stack = stack->previous;
+		}
 	}
 	return (1);
 }
