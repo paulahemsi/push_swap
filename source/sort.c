@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 11:15:23 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/05 01:01:40 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/05 01:13:45 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,10 +302,10 @@ static void	return_half_to_a(t_stack *stack, t_aux *aux, int middle_b)
 		i++;
 	}
 	define_numbers(&num, stack->a);
-	while ()//TODO comparar se index do primeiro é um acima do index do ultimo, se não for, RA
-	{
+	// while ()//TODO comparar se index do primeiro é um acima do index do ultimo, se não for, RA
+	// {
 		
-	}
+	// }
 	ft_printf("saindo na return half to a:\n");
 	debug(stack->a, stack->b);
 }

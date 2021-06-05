@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 19:02:18 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/29 12:54:17 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/05 01:05:33 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef	struct	s_list
 typedef struct s_dlist
 {
 	int				content;
+	int				index;
 	struct s_dlist	*next;
 	struct s_dlist	*previous;
 }				t_dlist;
