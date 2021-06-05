@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/05 01:23:43 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/05 12:33:20 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,14 @@ static int	*fill_ordered_array(t_dlist *stack_a, int total)
 	return (ordered_array);
 }
 
-//! TO AQUI QUERENDO REBOBINAR O STACK_A QUE FICOU NULL
 static void	fill_stack_indexes(t_stack *stack, t_aux *aux)
 {
-	int i;
-	int index;
-	int size;
+	int	i;
+	int	index;
+	int	size;
+	t_dlist	*initial_ptr;
 
+	initial_ptr = stack->a;
 	size = ft_dlstsize(stack->a);
 	i = 0;
 	while (i < size)
@@ -112,15 +113,11 @@ static void	fill_stack_indexes(t_stack *stack, t_aux *aux)
 			}
 			index++;
 		}
-//		if (stack->a->next)
-//			stack->a = stack->a->next;
+		if (stack->a->next)
+			stack->a = stack->a->next;
 		i++;
 	}
-//	while (i >= 0)
-//	{
-//		stack->a = stack->a->previous;
-//		i--;
-//	}
+	stack->a = initial_ptr;
 }
 
 
@@ -141,9 +138,8 @@ int	main (int argc, char **argv)
 	init_stack_a(argc, argv, &stack.a);
 	aux.ordered_array = fill_ordered_array(stack.a, aux.total_num);
 	aux.beginning = aux.ordered_array[0];
-	aux.middle_num = aux.ordered_array[(aux.total_num / 2)];
+	aux.last_ordered_index = -1;
 	fill_stack_indexes(&stack, &aux);
-	ft_printf("middle number: %i\n", aux.middle_num);
 	lets_sort(&stack, &aux);
 	ft_lstiter(aux.instr, &ft_putstr);
 	ft_dlstiter(stack.a, &ft_putnbr);

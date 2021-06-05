@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 11:06:40 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/05 01:00:29 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/05 15:29:43 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct	s_aux
 	int			total_num;
 	int			middle_num;
 	int			beginning;
+	int			last_ordered_index;
+	int			top_index_in_b;
+	int			bottom_index_in_b;
 }				t_aux;
 
 typedef struct	s_num
@@ -57,6 +60,8 @@ void	lets_sort(t_stack *stack, t_aux *aux);
 int		is_sorted(t_dlist *stack);
 int		is_reverse_sorted(t_dlist *stack);
 int		is_full(t_dlist *stack, int total_numbers);
+int		any_small_in_stack_a(t_dlist *stack_a, t_aux *aux);
+int		define_middle_number(t_aux *aux, int bigger_index, int smallest_index);
 /*
 ** aux
 */

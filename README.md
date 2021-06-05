@@ -94,4 +94,6 @@ command  | action |
 
 * 01/06 - 02/06: hello ~~darkness~~ procrastination my old friend
 
-* 03/07: Trying to get small chunks at a time, I started to debug the new messy code with small numbers, step by step, correcting some weird parts and optimizing it a bit. Tomorrow I need to debug a set of numbers that the code is unable to sort (`-44 -12 86 -85 -60`).
+* 03/07: Trying to get small chunks at a time, I started to debug the new messy code with small numbers, step by step, correcting some weird parts and optimizing it a bit. Tomorrow I need to debug a set of numbers that the code is unable to sort (`-44 -12 86 -85 -60`)
+
+* 04/07: I felt that my logic was not going anywhere, so I erased my `lets_sort` function and spent the hole day figuring out another way to sort the numbers and starting to code. Basically, I'm trying to split the first stack in half, send it to *stack_b* and bring it back sorting it. In that point I should have a little bit sorted and a bigger amount not sorted, so I send half of the non-sorted part to *stack_b* and repeat the process over and over.

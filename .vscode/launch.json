@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "/home/paulahemsi/push_swap_github/push_swap",
-			"args": ["1", "9", "2", "8", "3", "7", "4", "6", "5"],
+			"args": ["5", "4", "3", "2", "1", "-1", "0"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
