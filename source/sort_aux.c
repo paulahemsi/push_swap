@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 09:16:13 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/05 16:17:02 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/05 18:53:19 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,14 @@ int	define_middle_number(t_aux *aux, int bigger_index, int smallest_index)
 
 	index = smallest_index + ((bigger_index - smallest_index) / 2);
 	return (aux->ordered_array[index]) ;
+}
+
+void	rewind(t_dlist **stack_to_rewind)
+{
+	t_dlist	*stack;
+
+	stack = *stack_to_rewind;
+	while (stack->previous != NULL)
+		stack = stack->previous;
+	*stack_to_rewind = stack;
 }
