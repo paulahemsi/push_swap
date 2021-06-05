@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/03 21:15:52 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/05 00:48:59 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ static int	*fill_ordered_array(t_dlist *stack_a, int total)
 }
 
 //TODO opção da lista vir em variável de ambiente
+//? colocar indexes nas structs?
 int	main (int argc, char **argv)
 {
 	t_stack	stack;
@@ -106,15 +107,13 @@ int	main (int argc, char **argv)
 	check_if_args_are_integers(argc, argv);
 	init_stack_a(argc, argv, &stack.a);
 	aux.ordered_array = fill_ordered_array(stack.a, aux.total_num);
+	aux.beginning = aux.ordered_array[0];
 	aux.middle_num = aux.ordered_array[(aux.total_num / 2)];
 	ft_printf("middle number: %i\n", aux.middle_num);
-	//push(&stack.a, &stack.b, &aux.instr, 'b');
-	//push(&stack.a, &stack.b, &aux.instr, 'b');
-	
-	lets_sort(&stack.a, &stack.b, &aux);
+	lets_sort(&stack, &aux);
 	ft_lstiter(aux.instr, &ft_putstr);
-	ft_printf("--------total instructions: %i\n--------total numbers: %i\n", ft_lstsize(aux.instr), aux.total_num);
 	ft_dlstiter(stack.a, &ft_putnbr);
+	ft_printf("--------total instructions: %i\n--------total numbers: %i\n", ft_lstsize(aux.instr), aux.total_num);
 	clear(&stack, &aux);
 	return (0);
 }

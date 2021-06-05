@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 11:06:40 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/31 17:10:00 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/05 01:00:29 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ typedef struct	s_aux
 	t_list		*instr;
 	int			total_num;
 	int			middle_num;
+	int			beginning;
 }				t_aux;
 
 typedef struct	s_num
 {
 	int			first;
+	int			highest;
+	// int			beginning;
 	int			second;
 	int			last;
 }				t_num;
@@ -50,7 +53,7 @@ void	push(t_dlist **origin_stack, t_dlist **dest_stack, t_list **instr, char id)
 /*
 ** sorting
 */
-void	lets_sort(t_dlist **stack_a, t_dlist **stack_b, t_aux *aux);
+void	lets_sort(t_stack *stack, t_aux *aux);
 int		is_sorted(t_dlist *stack);
 int		is_reverse_sorted(t_dlist *stack);
 int		is_full(t_dlist *stack, int total_numbers);
