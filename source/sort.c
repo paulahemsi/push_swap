@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 11:15:23 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/05 15:35:19 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/05 17:51:58 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,41 +39,6 @@ static void	define_numbers(t_num *num, t_dlist *stack)
 	num->last = stack->content;
 }
 
-static int reverse_rotation_is_quicker(t_dlist *stack, int number)
-{
-	int	i;
-	int	steps_to_rotate;
-	int	steps_to_reverse_rotate;
-
-	i = 0;
-	steps_to_rotate = 0;
-	steps_to_reverse_rotate = 0;
-	while (stack->next != NULL)
-	{
-		if (stack->content == number)
-		{
-			steps_to_rotate = i;
-			break ;
-		}
-		stack = stack->next;
-		i++;
-	}
-	i = 0;
-	while (stack->previous != NULL)
-	{
-		if (stack->content == number)
-		{
-			steps_to_reverse_rotate = i;
-			break ;
-		}
-		stack = stack->previous;
-		i++;
-	}
-	if (steps_to_reverse_rotate < steps_to_rotate)
-		return (1);
-	return (0);
-}
-
 static void	send_half_to_b(t_stack *stack, t_aux *aux)
 {
 	int		size_a;
@@ -84,9 +49,10 @@ static void	send_half_to_b(t_stack *stack, t_aux *aux)
 	size_a = ft_dlstsize(stack->a);
 	i = 0;
 	aux->middle_num = define_middle_number(aux, (aux->total_num - 1), (aux->last_ordered_index + 1));
+	ft_printf("middle num %i\n", aux->middle_num);
 	while ((i < size_a) && (any_small_in_stack_a(stack->a, aux)))
 	{
-		if (stack->a->content < aux->middle_num)
+		if (stack->a->content <= aux->middle_num)
 		{
 			push(&stack->a, &stack->b, &aux->instr, 'b');
 			if (stack->a->index > aux->top_index_in_b)
@@ -120,58 +86,50 @@ static void	return_half_to_a(t_stack *stack, t_aux *aux)
 {
 	int		size_b;
 	t_num	num;
-	int		i;
-
+//!alguma hora precisa de rra pra não deixar números maiores no meio do a organizado
 	ft_printf("entrando na return half to a:\n");
 	debug(stack->a, stack->b);
 	if (is_full(stack->a, aux->total_num))
+	{
+		order_a(stack, aux);
 		return ;
+	}
 	size_b = ft_dlstsize(stack->b);
 	if (aux->last_ordered_index > -1)
-	{
 		aux->beginning = aux->ordered_array[aux->last_ordered_index + 1];
-		order_a(stack, aux);
-	}
-	i = 0;
-	while (i < size_b)
+	define_numbers(&num, stack->b);
+	if (size_b < 15)
 	{
-		define_numbers(&num, stack->b);
-		if (size_b < 15)
-		{
-			if (num.highest == num.first)
-				push(&stack->b, &stack->a, &aux->instr, 'a');
-			else
-			{
-				if (num.first == aux->beginning)
-					send_next_smaller_to_a(stack, aux);
-				else
-				{
-					if (reverse_rotation_is_quicker(stack->b, num.highest))
-						reverse_rotate(&stack->b, &aux->instr, 'b');
-					else
-						rotate(&stack->b, &aux->instr, 'b');
-				}
-			}
-		}
+		if (num.highest == num.first)
+			push(&stack->b, &stack->a, &aux->instr, 'a');
 		else
 		{
-			if (num.first > define_middle_number(aux, aux->top_index_in_b, aux->bottom_index_in_b))
-				push(&stack->b, &stack->a, &aux->instr, 'a');
+			if (num.first == aux->beginning)
+				send_next_smaller_to_a(stack, aux);
 			else
 			{
-				if (num.first == aux->beginning)
-					send_next_smaller_to_a(stack, aux);
+				if (reverse_rotation_is_quicker(stack->b, num.highest))
+					reverse_rotate(&stack->b, &aux->instr, 'b');
 				else
 					rotate(&stack->b, &aux->instr, 'b');
 			}
 		}
-		i++;
 	}
-	define_numbers(&num, stack->a);
-	order_a(stack, aux);
+	else
+	{
+		if (num.first > define_middle_number(aux, aux->top_index_in_b, aux->bottom_index_in_b))//!isso pode dar xabu pq conforme passa pro a, mudam os top e bottom indexes
+			push(&stack->b, &stack->a, &aux->instr, 'a');
+		else
+		{
+			if (num.first == aux->beginning)
+				send_next_smaller_to_a(stack, aux);
+			else
+				rotate(&stack->b, &aux->instr, 'b');
+		}
+	}
 	ft_printf("saindo na return half to a:\n");
 	debug(stack->a, stack->b);
-	//return_half_to_a(stack, aux, middle_b);
+	return_half_to_a(stack, aux);
 }
 
 

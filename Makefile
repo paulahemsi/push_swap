@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/05 21:18:02 by phemsi-a          #+#    #+#              #
-#    Updated: 2021/06/03 19:39:01 by phemsi-a         ###   ########.fr        #
+#    Updated: 2021/06/05 18:17:04 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ LIBFT_PATH = ./libraries/libft/
 
 SRC = ./source/
 
-FILES = $(SRC)push_swap.c $(SRC)operations.c $(SRC)sort.c $(SRC)sort_aux.c $(SRC)quick_sort.c $(SRC)system.c
-OBJECTS = push_swap.o operations.o sort.o sort_aux.o quick_sort.o system.o
+FILES = $(SRC)push_swap.c $(SRC)operations.c $(SRC)sort.c $(SRC)sort_aux.c $(SRC)quick_sort.c $(SRC)system.c $(SRC)choose_rotation.c
+OBJECTS = push_swap.o operations.o sort.o sort_aux.o quick_sort.o system.o choose_rotation.o
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror

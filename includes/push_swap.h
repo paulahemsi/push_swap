@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 11:06:40 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/05 15:29:43 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/05 18:15:08 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ int		define_middle_number(t_aux *aux, int bigger_index, int smallest_index);
 ** aux
 */
 void	quick_sort(int *array, int left, int right);
+int		reverse_rotation_is_quicker(t_dlist *stack, int target_number);
 
 #endif
