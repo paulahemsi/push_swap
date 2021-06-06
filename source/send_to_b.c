@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:59:48 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 18:21:10 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/06 20:45:41 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ static void	send_all_onorder_to_b(t_stack *stack, t_aux *aux)
 void	send_half_to_b(t_stack *stack, t_aux *aux)
 {
 	int		size_a;
+	int		rotations;
 	int		i;
 
 	i = 0;
+	rotations = 0;
 	init_values(stack, aux, &size_a);
 	if ((aux->a.higher_index - aux->a.next_index_to_sort) < 7)
 		send_all_onorder_to_b(stack, aux);//TODO if else pro while
@@ -61,11 +63,21 @@ void	send_half_to_b(t_stack *stack, t_aux *aux)
 		if (stack->a->index <= aux->a.mid_index)
 			send_to_b(stack, aux);
 		else
+		{
 			rotate(&stack->a, &stack->instr, 'a');
+			rotations++;
+		}
 		i++;
 	}
 	if (aux->a.next_index_to_sort)
-		order_a(stack, aux);
+	{
+		i = 0;
+		while (i < rotations)
+		{
+			reverse_rotate(&stack->a, &stack->instr, 'a');
+			i++;
+		}
+	}
 	ft_printf("numeros enviados pro b\n");
 	debug(stack->a, stack->b);
 }
