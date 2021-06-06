@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:57:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/05 19:04:53 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/06 15:48:33 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ static void	fill_stack_indexes(t_stack *stack, t_aux *aux)
 
 static void	init_aux(t_dlist *stack_a, t_aux *aux, int argc)
 {
-	aux->instr = NULL;
+	ft_memset(aux, 0, sizeof(*aux));
 	aux->total_num = argc - 1;
 	aux->ordered_array = fill_ordered_array(stack_a, aux->total_num);
-	aux->next_small_num = aux->ordered_array[0];
-	aux->last_ordered_index = -1;
+	aux->a.higher_index = aux->total_num - 1;
+	aux->a.next_index_to_sort = 0;
+	aux->a.mid_index = define_mid_index(aux->a.higher_index, aux->a.next_index_to_sort);
 }
 
 void	init(t_stack *stack, t_aux *aux, int argc, char **argv)

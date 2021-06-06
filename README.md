@@ -99,3 +99,5 @@ command  | action |
 * 04/06: I felt that my logic was not going anywhere, so I erased my `lets_sort` function and spent the hole day figuring out another way to sort the numbers and starting to code. Basically, I'm trying to split the first stack in half, send it to *stack_b* and bring it back sorting it. In that point I should have a little bit sorted and a bigger amount not sorted, so I send half of the non-sorted part to *stack_b* and repeat the process over and over.
 
 * 05/06: Continued to implement the new sorting logic and refactored some parts of the code. I changed many functions to make them recursive, it was a good and joyfull exercise.
+
+* 06/06: stack indexes

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 17:51:34 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/05 18:20:01 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/06 16:37:35 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	calculate_rotation_steps(t_dlist *stack, int target_number, int steps)
 {
-	if (stack->content == target_number)
+	if (stack->index == target_number)
 		return (steps) ;
 	stack = stack->next;
 	return (calculate_rotation_steps(stack, target_number, (steps + 1))) ;
@@ -22,7 +22,7 @@ static int	calculate_rotation_steps(t_dlist *stack, int target_number, int steps
 
 static int	calculate_reverse_rotation_steps(t_dlist *stack, int target_number, int steps)
 {
-	if (stack->content == target_number)
+	if (stack->index == target_number)
 		return (steps) ;
 	stack = stack->previous;
 	return (calculate_reverse_rotation_steps(stack, target_number, (steps + 1))) ;

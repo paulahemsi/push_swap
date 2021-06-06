@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 09:16:13 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 14:31:25 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/06 16:03:25 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,9 @@ int	is_full(t_dlist *stack, int total_numbers)
 	return (0);
 }
 
-int	any_small_in_stack_a(t_dlist *stack_a, t_aux *aux)
+int	define_mid_index(int bigger_index, int smallest_index)
 {
-	while (stack_a != NULL)
-	{
-		if ((stack_a->content < aux->middle_num) && (stack_a->index > aux->last_ordered_index))
-			return (1);
-		stack_a = stack_a->next;
-	}
-	return (0);
-}
-
-int	define_middle_number(t_aux *aux, int bigger_index, int smallest_index)
-{
-	int	index;
-
-	index = smallest_index + ((bigger_index - smallest_index) / 2);
-	return (aux->ordered_array[index]) ;
+	return (smallest_index + ((bigger_index - smallest_index) / 2)) ;
 }
 
 void	rewind(t_dlist **stack_to_rewind)

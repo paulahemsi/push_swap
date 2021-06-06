@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 11:06:40 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 10:25:29 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/06 18:19:05 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,37 @@ typedef struct	s_stack
 {
 	t_dlist		*a;
 	t_dlist		*b;
+	t_list		*instr;
 }				t_stack;
+
+typedef struct	s_stack_aux_a
+{
+	int			mid_index;
+	int			higher_index;
+	int			next_index_to_sort;
+}				t_stack_aux_a;
+
+typedef struct	s_stack_aux_b
+{
+	int			mid_index;
+	int			higher_index;
+	int			lower_index;
+}				t_stack_aux_b;
 
 typedef struct	s_aux
 {
-	t_list		*instr;
-	int			*ordered_array;
-	int			total_num;
-	int			middle_num;
-	int			next_small_num;
-	int			last_ordered_index;
-	int			top_index_in_b;
-	int			bottom_index_in_b;
+	int				*ordered_array;
+	int				total_num;
+	
+	t_stack_aux_a	a;
+	t_stack_aux_b	b;
+	
+	
+	// int			middle_num;
+	// int			next_small_num;
+	// int			last_ordered_index;
+	// int			top_index_in_b;
+	// int			bottom_index_in_b;
 }				t_aux;
 
 typedef struct	s_num
@@ -60,16 +79,22 @@ void	push(t_dlist **origin_stack, t_dlist **dest_stack, t_list **instr, char id)
 */
 void	lets_sort(t_stack *stack, t_aux *aux);
 int		any_small_in_stack_a(t_dlist *stack_a, t_aux *aux);
-int		define_middle_number(t_aux *aux, int bigger_index, int smallest_index);
+void	send_half_to_b(t_stack *stack, t_aux *aux);
+void	return_half_to_a(t_stack *stack, t_aux *aux, int limit);
+void	order_a(t_stack *stack, t_aux *aux);
 /*
 ** aux
 */
 void	quick_sort(int *array, int left, int right);
+int		define_mid_index(int bigger_index, int smallest_index);
 int		reverse_rotation_is_quicker(t_dlist *stack, int target_number);
 void	rewind(t_dlist **stack_to_rewind);
 int		is_sorted(t_dlist *stack);
 int		is_reverse_sorted(t_dlist *stack);
 int		is_full(t_dlist *stack, int total_numbers);
 
+
+
+void	debug(t_dlist *stack_a, t_dlist *stack_b);
 
 #endif
