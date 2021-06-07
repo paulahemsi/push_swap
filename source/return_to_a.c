@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:07:54 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 18:23:36 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/06 21:04:25 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ static void	send_next_bigger_to_a(t_stack *stack, t_aux *aux)
 {
 	push(&stack->b, &stack->a, &stack->instr, 'a');
 	aux->b.higher_index--;
+	if (stack->a->index == aux->a.next_index_to_sort)
+	{
+		rotate(&stack->a, &stack->instr, 'a');
+		aux->a.next_index_to_sort++;
+	}
 }
 
 static void	send_next_smaller_to_a(t_stack *stack, t_aux *aux)

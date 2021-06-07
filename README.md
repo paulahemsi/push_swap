@@ -100,4 +100,4 @@ command  | action |
 
 * 05/06: Continued to implement the new sorting logic and refactored some parts of the code. I changed many functions to make them recursive, it was a good and joyfull exercise.
 
-* 06/06: So, decided to implemented a index in my link list nodes, to better keep track of the numbers without always have to refeer to the ordered array. I implemented the firts part of the algorithm, and it's sorting small stacks.
+* 06/06: So, decided to implemented a index in my link list nodes, to better keep track of the numbers without always have to refeer to the ordered array. I implemented the firts part of the algorithm, and it's sorting medium stacks. 
