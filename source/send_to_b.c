@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:59:48 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/07 23:05:58 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/08 13:05:07 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,30 @@ void	send_half_to_b(t_stack *stack, t_aux *aux)
 	i = 0;
 	rotations = 0;
 	init_values(stack, aux, &size_a);
-	if ((aux->a.higher_index - aux->a.next_index_to_sort) < 7)
+	if ((aux->a.higher_index - aux->a.next_index_to_sort) < LAST_CHUNCK)
 		send_all_onorder_to_b(stack, aux);//TODO if else pro while
-	while ((i < size_a) && (any_small_in_stack_a(stack->a, aux)))
+	else
 	{
-		if (stack->a->index <= aux->a.mid_index)
-			send_to_b(stack, aux);
-		else
+		
+		while ((i < size_a) && (any_small_in_stack_a(stack->a, aux)))
 		{
-			rotate(&stack->a, &stack->instr, 'a');
-			rotations++;
-		}
-		i++;
-	}
-	if (aux->a.next_index_to_sort)
-	{
-		i = 0;
-		while (i < rotations)
-		{
-			reverse_rotate(&stack->a, &stack->instr, 'a');
+			if (stack->a->index <= aux->a.mid_index)
+				send_to_b(stack, aux);
+			else
+			{
+				rotate(&stack->a, &stack->instr, 'a');
+				rotations++;
+			}
 			i++;
+		}
+		if (aux->a.next_index_to_sort)
+		{
+			i = 0;
+			while (i < rotations)
+			{
+				reverse_rotate(&stack->a, &stack->instr, 'a');
+				i++;
+			}
 		}
 	}
 }

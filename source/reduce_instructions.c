@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 09:55:53 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/08 11:41:56 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/08 13:10:43 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 static void	replace(t_list **instr, char *content)
 {
-	t_list *new_node;
+	t_list	*new_node;
+	t_list	*orphan_node;
 
 	new_node = *instr;
 	new_node->content = content;
+	orphan_node = new_node->next;
 	new_node->next = new_node->next->next;
+	free(orphan_node);
 	*instr = new_node;
 }
 
