@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:05:17 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/05/29 12:41:08 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/08 00:08:45 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	rotate(t_dlist **stack, t_list **instr, char id)
 		return ;
 	first = *stack;
 	last = *stack;
+	if (last->next == NULL)
+		return ;
 	first->next->previous = NULL;
 	*stack = first->next;
 	while (last->next != NULL)

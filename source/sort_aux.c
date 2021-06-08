@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 09:16:13 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 16:03:25 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/08 09:27:44 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,14 @@ void	rewind(t_dlist **stack_to_rewind)
 	while (stack->previous != NULL)
 		stack = stack->previous;
 	*stack_to_rewind = stack;
+}
+
+void	fast_forward(t_dlist **stack_to_fast_forward)
+{
+	t_dlist	*stack;
+
+	stack = *stack_to_fast_forward;
+	while (stack->next != NULL)
+		stack = stack->next;
+	*stack_to_fast_forward = stack;
 }

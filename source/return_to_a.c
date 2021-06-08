@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:07:54 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/07 23:09:22 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/08 11:49:41 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	finish_sorting(t_stack *stack, t_aux *aux)
 		send_next_smaller_to_a(stack, aux);
 	else if (stack->b->index == aux->b.higher_index)
 		send_next_bigger_to_a(stack, aux);
-	else if (reverse_rotation_is_quicker(stack->b, aux->a.next_index_to_sort)) //TODO higher index e comparar
+	else if (reverse_rotation_is_quicker(stack->b, aux->a.next_index_to_sort))
 		reverse_rotate(&stack->b, &stack->instr, 'b');
 	else
 		rotate(&stack->b, &stack->instr, 'b');
@@ -96,10 +96,7 @@ static void	start_sorting(t_stack *stack, t_aux *aux)
 
 	size_b = ft_dlstsize(stack->b);
 	if (size_b == 0)
-	{
-		debug(stack->a, stack->b);
 		return ;
-	}
 	define_values(stack, aux);
 	if ((stack->b->index > aux->b.mid_index) || (size_b == 1))
 		push(&stack->b, &stack->a, &stack->instr, 'a');

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/07 23:06:44 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/08 11:50:03 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int	main (int argc, char **argv)
 	check_if_args_are_integers(argc, argv);
 	init(&stack, &aux, argc, argv);
 	lets_sort(&stack, &aux);
+	reduce_instructions(&stack.instr);
 	ft_lstiter(stack.instr, &ft_putstr);
-	ft_dlstiter(stack.a, &ft_putnbr);
-	ft_printf("--------total instructions: %i\n--------total numbers: %i\n", ft_lstsize(stack.instr), aux.total_num);
+
 	clear(&stack, &aux);
 	return (0);
 }

@@ -102,4 +102,6 @@ command  | action |
 
 * 06/06: So, decided to implemented a index in my link list nodes, to better keep track of the numbers without always have to refeer to the ordered array. I implemented the firts part of the algorithm, and it's sorting medium stacks. 
 
-* 07/06: The basics of the new sorting logic was implemented and working! It's much better than the last one with 100 numbers, but still pretty uneficcient with 500. 
+* 07/06: The basics of the new sorting logic was implemented and working! It's much better than the last one with 100 numbers, but still pretty uneficcient with 500.
+
+* 08/06: The new function to reduce the total amount of instructions by replacing matching neighbors ("ra" and "rb" or "rra" and "rrb" or "sa" or "sb") for their synthetic version ("rr", "rrr", "ss") is implemented.
