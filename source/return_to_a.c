@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:07:54 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 21:04:25 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/07 23:09:22 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ static void	finish_sorting(t_stack *stack, t_aux *aux)
 	if (size_b == 0)
 	{
 		order_a(stack, aux);
-		ft_printf("acabou finish sorting, b tá vazio\n");
-		debug(stack->a, stack->b);
 		return ;
 	}
 	else if (size_b == 1)
@@ -74,6 +72,50 @@ static void	finish_sorting(t_stack *stack, t_aux *aux)
 	finish_sorting(stack, aux);
 }
 
+static void	define_values(t_stack *stack, t_aux *aux)
+{
+	t_dlist	*stack_b;
+	
+	stack_b = stack->b;
+	aux->b.higher_index = INT_MIN;
+	aux->b.lower_index = INT_MAX;
+	while (stack_b)
+	{
+		if (stack_b->index > aux->b.higher_index)
+			aux->b.higher_index = stack_b->index;
+		if (stack->b->index < aux->b.lower_index)
+			aux->b.lower_index = stack_b->index;
+		stack_b = stack_b->next;
+	}
+	aux->b.mid_index = define_mid_index(aux->b.higher_index, aux->b.lower_index);
+}
+
+static void	start_sorting(t_stack *stack, t_aux *aux)
+{
+	int	size_b;
+
+	size_b = ft_dlstsize(stack->b);
+	if (size_b == 0)
+	{
+		debug(stack->a, stack->b);
+		return ;
+	}
+	define_values(stack, aux);
+	if ((stack->b->index > aux->b.mid_index) || (size_b == 1))
+		push(&stack->b, &stack->a, &stack->instr, 'a');
+	else if (stack->b->index == aux->a.next_index_to_sort)
+		send_next_smaller_to_a(stack, aux);
+	else
+		rotate (&stack->b, &stack->instr, 'b');//TODO calcular e incluir RRB
+	start_sorting(stack, aux);
+}
+
+static void	resend_to_b(t_stack *stack, t_aux *aux, int limit)
+{
+	while ((stack->a->index <= limit) && (stack->a->index >= aux->a.next_index_to_sort))
+		push(&stack->a, &stack->b, &stack->instr, 'b');
+}
+
 void	return_half_to_a(t_stack *stack, t_aux *aux, int limit)
 {
 	int	size_b;
@@ -84,10 +126,7 @@ void	return_half_to_a(t_stack *stack, t_aux *aux, int limit)
 		finish_sorting(stack, aux);
 		return ;
 	}
-	limit ++;
-	if (limit > 30)
-		return ;
-	ft_printf("limit %i\nna saída da return to a:\n", limit);
-	debug(stack->a, stack->b);
+	start_sorting(stack, aux);
+	resend_to_b(stack, aux, limit); 
 	return_half_to_a(stack, aux, limit);
 }

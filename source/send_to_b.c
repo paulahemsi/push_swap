@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:59:48 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 20:45:41 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/07 23:05:58 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	send_to_b(t_stack *stack, t_aux *aux)
 	push(&stack->a, &stack->b, &stack->instr, 'b');
 	if (stack->b->index > aux->b.higher_index)
 		aux->b.higher_index = stack->b->index;
-	else if (stack->b->index < aux->b.lower_index)
+	if (stack->b->index < aux->b.lower_index)
 		aux->b.lower_index = stack->b->index;
 }
 
@@ -78,6 +78,4 @@ void	send_half_to_b(t_stack *stack, t_aux *aux)
 			i++;
 		}
 	}
-	ft_printf("numeros enviados pro b\n");
-	debug(stack->a, stack->b);
 }

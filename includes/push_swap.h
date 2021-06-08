@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 11:06:40 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 18:19:05 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/07 23:01:11 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,10 @@ typedef struct	s_aux
 {
 	int				*ordered_array;
 	int				total_num;
-	
 	t_stack_aux_a	a;
 	t_stack_aux_b	b;
-	
-	
-	// int			middle_num;
-	// int			next_small_num;
-	// int			last_ordered_index;
-	// int			top_index_in_b;
-	// int			bottom_index_in_b;
 }				t_aux;
 
-typedef struct	s_num
-{
-	int			first;
-	int			highest;
-	// int			beginning;
-	int			second;
-	int			last;
-}				t_num;
 /*
 ** system
 */
