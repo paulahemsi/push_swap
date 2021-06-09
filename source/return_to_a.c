@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:07:54 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/09 11:45:30 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/09 18:52:57 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	return_half_to_a(t_stack *stack, t_aux *aux, int limit)
 	int	size_b;
 
 	size_b = ft_dlstsize(stack->b);
-	if (size_b < 13)
+	if (size_b < 50)
 	{
 		finish_sorting(stack, aux);
 		return ;

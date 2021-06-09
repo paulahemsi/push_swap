@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/09 16:55:09 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/09 17:46:02 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,15 @@ static void	init_stacks(t_stack *stack)
 //TODO opção da lista vir em string
 int	main (int argc, char **argv)
 {
-	int		stack_size;
 	t_stack	stack;
 	t_aux	aux;
 
-	init_stacks(&stack);
 	if (argc == 1)
 		return (0);
 	check_args(argc, argv);
+	init_stacks(&stack);
 	init(&stack, &aux, argc, argv);
-	stack_size = ft_dlstsize(stack.a);
-	if (stack_size < 10)
-		small_sort(&stack, &aux, stack_size);
-	else
-		lets_sort(&stack, &aux);
+	lets_sort(&stack, &aux);
 	reduce_instructions(&stack.instr);
 	ft_lstiter(stack.instr, &ft_putstr);
 	clear(&stack, &aux);

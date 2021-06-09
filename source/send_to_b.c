@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:59:48 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/09 10:58:22 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/09 18:36:46 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	any_small_in_stack_a(t_dlist *stack_a, t_aux *aux)
 {
 	while (stack_a != NULL)
 	{
-		if ((stack_a->index < aux->a.mid_index) && (stack_a->index >= aux->a.next_index_to_sort))
+		if ((stack_a->index <= aux->a.mid_index) && (stack_a->index >= aux->a.next_index_to_sort))
 			return (1);
 		stack_a = stack_a->next;
 	}
@@ -69,20 +69,14 @@ static void	send_smallers_to_b(t_stack *stack, t_aux *aux, int size_a)
 	}
 }
 
-void	send_half_to_b(t_stack *stack, t_aux *aux, int controler)
+void	send_half_to_b(t_stack *stack, t_aux *aux)//, int controler)
 {
 	int		size_a;
 
 	init_values(stack, aux, &size_a);
 	if ((aux->a.higher_index - aux->a.next_index_to_sort) < LAST_CHUNCK)
-	{
-		if (controler == 0)
-			while (stack->a)
-				send_to_b(stack, aux);
-		else
 			while (stack->a->index > 0)
 				send_to_b(stack, aux);
-	}
 	else
 		send_smallers_to_b(stack, aux, size_a);
 }
