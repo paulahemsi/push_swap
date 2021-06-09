@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 11:06:40 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/09 10:57:38 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/09 13:27:50 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	push(t_dlist **origin_stack, t_dlist **dest_stack, t_list **instr, char id)
 ** sorting
 */
 void	lets_sort(t_stack *stack, t_aux *aux);
+void	small_sort(t_stack *stack, t_aux *aux, int total_numbers);
 int		any_small_in_stack_a(t_dlist *stack_a, t_aux *aux);
 void	send_half_to_b(t_stack *stack, t_aux *aux, int controler);
 void	return_half_to_a(t_stack *stack, t_aux *aux, int limit);
@@ -80,6 +81,8 @@ int		reverse_rotation_is_quicker_multi_nums(t_dlist *stack, int first_num, t_aux
 void	rewind(t_dlist **stack_to_rewind);
 void	fast_forward(t_dlist **stack_to_fast_forward);
 void	reduce_instructions(t_list **instructions);
+int		is_full(t_dlist *stack, int total_numbers);
+int		is_sorted(t_dlist *stack);
 
 
 

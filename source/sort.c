@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 11:15:23 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/09 12:35:49 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/09 13:27:40 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	debug(t_dlist *stack_a, t_dlist *stack_b)
 	ft_dlstiter(stack_b, &ft_putnbr);
 }
 
-static int	is_sorted(t_dlist *stack)
+int	is_sorted(t_dlist *stack)
 {
 	if (stack)
 	{
@@ -34,7 +34,7 @@ static int	is_sorted(t_dlist *stack)
 	return (1);
 }
 
-static int	is_full(t_dlist *stack, int total_numbers)
+int	is_full(t_dlist *stack, int total_numbers)
 {
 	int	numbers_in_stack;
 
