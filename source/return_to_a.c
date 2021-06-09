@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:07:54 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/08 23:35:42 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/09 11:45:30 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,6 @@ static void	send_next_smaller_to_a(t_stack *stack, t_aux *aux)
 	aux->b.lower_index++;
 }
 
-static void	finish_sorting(t_stack *stack, t_aux *aux)
-{
-	int	size_b;
-
-	size_b = ft_dlstsize(stack->b);
-	if (size_b == 0)
-	{
-		order_a(stack, aux);
-		return ;
-	}
-	else if (size_b == 1)
-		push(&stack->b, &stack->a, &stack->instr, 'a');
-	else if (stack->b->index == aux->a.next_index_to_sort)
-		send_next_smaller_to_a(stack, aux);
-	else if (stack->b->index == aux->b.higher_index)
-		send_next_bigger_to_a(stack, aux);
-	else if (reverse_rotation_is_quicker(stack->b, aux->a.next_index_to_sort))
-		reverse_rotate(&stack->b, &stack->instr, 'b');
-	else
-		rotate(&stack->b, &stack->instr, 'b');
-	finish_sorting(stack, aux);
-}
-
 static void	define_values(t_stack *stack, t_aux *aux)
 {
 	t_dlist	*stack_b;
@@ -90,6 +67,31 @@ static void	define_values(t_stack *stack, t_aux *aux)
 	aux->b.mid_index = define_mid_index(aux->b.higher_index, aux->b.lower_index);
 }
 
+static void	finish_sorting(t_stack *stack, t_aux *aux)
+{
+	int	size_b;
+
+	size_b = ft_dlstsize(stack->b);
+	define_values(stack, aux);
+	if (size_b == 0)
+	{
+		order_a(stack, aux);
+		return ;
+	}
+	else if (size_b == 1)
+		push(&stack->b, &stack->a, &stack->instr, 'a');
+	else if (stack->b->index == aux->a.next_index_to_sort)
+		send_next_smaller_to_a(stack, aux);
+	else if (stack->b->index == aux->b.higher_index)
+		send_next_bigger_to_a(stack, aux);
+	else if (reverse_rotation_is_quicker(stack->b, aux->a.next_index_to_sort))
+		reverse_rotate(&stack->b, &stack->instr, 'b');
+	else
+		rotate(&stack->b, &stack->instr, 'b');
+	//debug(stack->a, stack->b);
+	finish_sorting(stack, aux);
+}
+
 static void	start_sorting(t_stack *stack, t_aux *aux)
 {
 	int	size_b;
@@ -106,6 +108,7 @@ static void	start_sorting(t_stack *stack, t_aux *aux)
 		reverse_rotate (&stack->b, &stack->instr, 'b');
 	else
 		rotate (&stack->b, &stack->instr, 'b');
+	//debug(stack->a, stack->b);
 	start_sorting(stack, aux);
 }
 

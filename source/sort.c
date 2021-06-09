@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 11:15:23 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/08 12:53:52 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/09 12:35:49 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,14 @@ static int	is_full(t_dlist *stack, int total_numbers)
 
 void	lets_sort(t_stack *stack, t_aux *aux)
 {
+	static int	controler;
+
 	if (is_sorted(stack->a) && is_full(stack->a, aux->total_num))
 		return ;
-	send_half_to_b(stack, aux);
+	send_half_to_b(stack, aux, controler);
+	//debug(stack->a, stack->b);
 	return_half_to_a(stack, aux, aux->b.higher_index);
+	//debug(stack->a, stack->b);
+	controler++;
 	lets_sort(stack, aux);
 }
