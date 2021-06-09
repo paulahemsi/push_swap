@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 09:16:13 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/09 10:57:20 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/09 20:07:22 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	define_three_quarters_index(int bigger_index, int smallest_index)
 {
-	return (smallest_index + ((bigger_index - smallest_index) / 2) + ((bigger_index - smallest_index) / 4) ) ;
+	return (smallest_index + ((bigger_index - smallest_index) / 2));
 }
 
 int	define_mid_index(int bigger_index, int smallest_index)
 {
-	return (smallest_index + ((bigger_index - smallest_index) / 2)) ;
+	return (smallest_index + ((bigger_index - smallest_index) / 2));
 }
 
 void	rewind(t_dlist **stack_to_rewind)
