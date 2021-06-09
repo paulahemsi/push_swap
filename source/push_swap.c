@@ -6,52 +6,65 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/09 13:50:42 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/09 16:55:09 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	check_if_args_are_integers(int argc, char **argv)
+static void	check_if_arg_are_integer(char **argv, int i)
 {
-	int		i;
 	int		j;
 	double	number;
+	
+	j = 0;
+	if (argv[i][j] == '-')
+		j++;
+	while (argv[i][j])
+	{
+		if (!(ft_isdigit(argv[i][j])))
+			return_error();
+		j++;
+	}
+	number = ft_atoi(argv[i]);
+	if (number > INT_MAX || number < INT_MIN)
+		return_error();
+}
+
+static void	check_args(int argc, char **argv)
+{
+	int		i;
 
 	i = 1;
 	while (i < argc)
 	{
-		j = 0;
-		if (argv[i][j] == '-')
-			j++;
-		while (argv[i][j])
-		{
-			if (!(ft_isdigit(argv[i][j])))
-				return_error();
-			j++;
-		}
-		number = ft_atoi(argv[i]);
-		if (number > INT_MAX || number < INT_MIN)
-			return_error();
+		check_if_arg_are_integer(argv, i);
 		i++;
 	}
+}
+
+static void	init_stacks(t_stack *stack)
+{
+	stack->a = NULL;
+	stack->b = NULL;
+	stack->instr = NULL;
 }
 
 //TODO opção da lista vir em string
 int	main (int argc, char **argv)
 {
+	int		stack_size;
 	t_stack	stack;
 	t_aux	aux;
 
-	stack.a = NULL;
-	stack.b = NULL;
-	stack.instr = NULL;
+	init_stacks(&stack);
 	if (argc == 1)
 		return (0);
-	check_if_args_are_integers(argc, argv);
+	check_args(argc, argv);
 	init(&stack, &aux, argc, argv);
-	if (ft_dlstsize(stack.a) < 10)
-		small_sort(&stack, &aux, ft_dlstsize(stack.a));
+	stack_size = ft_dlstsize(stack.a);
+	if (stack_size < 10)
+		small_sort(&stack, &aux, stack_size);
 	else
 		lets_sort(&stack, &aux);
 	reduce_instructions(&stack.instr);

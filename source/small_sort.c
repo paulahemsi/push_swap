@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 13:04:08 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/09 13:48:24 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/09 17:24:18 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,35 @@ static void	order_b(t_stack *stack)
 	}
 }
 
+static void	sort_three(t_stack *stack, int *first, int *second, int *last)
+{
+	if (*first > *second)
+	{
+		if (*last > *second)
+		{
+			if (*last > *first)
+				swap(&stack->a, &stack->instr, 'a');
+			else
+				rotate(&stack->a, &stack->instr, 'a');
+		}
+		else
+		{
+			swap(&stack->a, &stack->instr, 'a');
+			reverse_rotate(&stack->a, &stack->instr, 'a');
+		}
+	}
+	else
+	{
+		if (*second > *last)
+		{
+			swap(&stack->a, &stack->instr, 'a');
+			rotate(&stack->a, &stack->instr, 'a');
+		}
+		else
+			reverse_rotate(&stack->a, &stack->instr, 'a');
+	}
+}
+
 void	small_sort(t_stack *stack, t_aux *aux, int total_numbers)
 {
 	int	first;
@@ -81,12 +110,17 @@ void	small_sort(t_stack *stack, t_aux *aux, int total_numbers)
 	else
 	{
 		define_numbers(&first, &second, &last, stack->a);
-		if ((last < first) && (last < second))
-			reverse_rotate(&stack->a, &stack->instr, 'a');
-		else if (second < first)
-			swap(&stack->a, &stack->instr, 'a');
-		push(&stack->a, &stack->b, &stack->instr, 'b');
-		order_b(stack);
+		if (ft_dlstsize(stack->a) == 3)
+			sort_three(stack, &first, &second, &last);
+		else
+		{
+			if ((last < first) && (last < second))
+				reverse_rotate(&stack->a, &stack->instr, 'a');
+			else if (second < first)
+				swap(&stack->a, &stack->instr, 'a');
+			push(&stack->a, &stack->b, &stack->instr, 'b');
+			order_b(stack);
+		}
 	}
 	small_sort(stack, aux, total_numbers);
 }
