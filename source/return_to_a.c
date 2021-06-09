@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:07:54 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/08 11:49:41 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/08 23:35:42 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void	define_values(t_stack *stack, t_aux *aux)
 	{
 		if (stack_b->index > aux->b.higher_index)
 			aux->b.higher_index = stack_b->index;
-		if (stack->b->index < aux->b.lower_index)
+		if (stack_b->index < aux->b.lower_index)
 			aux->b.lower_index = stack_b->index;
 		stack_b = stack_b->next;
 	}
@@ -102,8 +102,10 @@ static void	start_sorting(t_stack *stack, t_aux *aux)
 		push(&stack->b, &stack->a, &stack->instr, 'a');
 	else if (stack->b->index == aux->a.next_index_to_sort)
 		send_next_smaller_to_a(stack, aux);
+	else if (reverse_rotation_is_quicker(stack->b, aux->a.next_index_to_sort))//, aux))
+		reverse_rotate (&stack->b, &stack->instr, 'b');
 	else
-		rotate (&stack->b, &stack->instr, 'b');//TODO calcular e incluir RRB
+		rotate (&stack->b, &stack->instr, 'b');
 	start_sorting(stack, aux);
 }
 

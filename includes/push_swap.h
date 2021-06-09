@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 11:06:40 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/08 13:01:36 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/08 19:54:23 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void	order_a(t_stack *stack, t_aux *aux);
 void	quick_sort(int *array, int left, int right);
 int		define_mid_index(int bigger_index, int smallest_index);
 int		reverse_rotation_is_quicker(t_dlist *stack, int target_number);
-int		reverse_rotation_is_quicker_two_nums(t_dlist *stack, int first_num, int second_num);
+// int		reverse_rotation_is_quicker_two_nums(t_dlist *stack, int first_num, int second_num);
+int		reverse_rotation_is_quicker_multi_nums(t_dlist *stack, int first_num, t_aux *aux);
 void	rewind(t_dlist **stack_to_rewind);
 void	fast_forward(t_dlist **stack_to_fast_forward);
 void	reduce_instructions(t_list **instructions);

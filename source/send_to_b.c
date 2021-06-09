@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:59:48 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/08 13:05:07 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/08 13:35:50 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,46 +40,43 @@ static void	send_to_b(t_stack *stack, t_aux *aux)
 		aux->b.lower_index = stack->b->index;
 }
 
-static void	send_all_onorder_to_b(t_stack *stack, t_aux *aux)
+static void	send_smallers_to_b(t_stack *stack, t_aux *aux, int size_a)
 {
-	while (stack->a->index > 0)
-		send_to_b(stack, aux);
+	int		rotations;
+	int		i;
+	
+	i = 0;
+	rotations = 0;
+	while ((i < size_a) && (any_small_in_stack_a(stack->a, aux)))
+	{
+		if (stack->a->index <= aux->a.mid_index)
+			send_to_b(stack, aux);
+		else
+		{
+			rotate(&stack->a, &stack->instr, 'a');
+			rotations++;
+		}
+		i++;
+	}
+	if (aux->a.next_index_to_sort)
+	{
+		i = 0;
+		while (i < rotations)
+		{
+			reverse_rotate(&stack->a, &stack->instr, 'a');
+			i++;
+		}
+	}
 }
-
 
 void	send_half_to_b(t_stack *stack, t_aux *aux)
 {
 	int		size_a;
-	int		rotations;
-	int		i;
 
-	i = 0;
-	rotations = 0;
 	init_values(stack, aux, &size_a);
 	if ((aux->a.higher_index - aux->a.next_index_to_sort) < LAST_CHUNCK)
-		send_all_onorder_to_b(stack, aux);//TODO if else pro while
+		while (stack->a->index > 0)
+			send_to_b(stack, aux);
 	else
-	{
-		
-		while ((i < size_a) && (any_small_in_stack_a(stack->a, aux)))
-		{
-			if (stack->a->index <= aux->a.mid_index)
-				send_to_b(stack, aux);
-			else
-			{
-				rotate(&stack->a, &stack->instr, 'a');
-				rotations++;
-			}
-			i++;
-		}
-		if (aux->a.next_index_to_sort)
-		{
-			i = 0;
-			while (i < rotations)
-			{
-				reverse_rotate(&stack->a, &stack->instr, 'a');
-				i++;
-			}
-		}
-	}
+		send_smallers_to_b(stack, aux, size_a);
 }
