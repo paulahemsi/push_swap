@@ -16,7 +16,7 @@ static void	check_if_arg_are_integer(char **argv, int i)
 {
 	int		j;
 	double	number;
-	
+
 	j = 0;
 	if (argv[i][j] == '-')
 		j++;

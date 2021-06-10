@@ -12,7 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-
 static void	replace(t_list **instr, char *content)
 {
 	t_list	*new_node;
@@ -62,13 +61,13 @@ static int	is_reducible(char *id)
 
 void	reduce_instructions(t_list **instructions)
 {
-	t_list *instr;
+	t_list	*instr;
 
 	instr = *instructions;
 	while (instr)
 	{
 		if (is_reducible(instr->content))
-			if(instr->next)
+			if (instr->next)
 				if (next_is_a_match(instr->content, instr->next->content))
 					replace_instructions(&instr, instr->content);
 		instr = instr->next;

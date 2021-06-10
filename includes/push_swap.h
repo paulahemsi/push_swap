@@ -68,14 +68,15 @@ void	small_sort(t_stack *stack, t_aux *aux, int total_numbers);
 int		any_small_in_stack_a(t_dlist *stack_a, t_aux *aux);
 void	send_half_to_b(t_stack *stack, t_aux *aux);
 void	return_half_to_a(t_stack *stack, t_aux *aux, int limit);
-void	order_a(t_stack *stack, t_aux *aux);
+//void	order_a(t_stack *stack, t_aux *aux);
 /*
 ** aux
 */
 void	quick_sort(int *array, int left, int right);
-int		define_mid_index(int bigger_index, int smallest_index);
-int		define_three_quarters_index(int bigger_index, int smallest_index);
+int		find_mid_index(int bigger_index, int smallest_index);
+int		find_mid_index(int bigger_index, int smallest_index);
 int		reverse_rotation_is_quicker(t_dlist *stack, int target_number);
+//void	define_values(t_stack *stack, t_aux *aux);
 // int		reverse_rotation_is_quicker_two_nums(t_dlist *stack, int first_num, int second_num);
 int		reverse_rotation_is_quicker_multi_nums(t_dlist *stack, int first_num, t_aux *aux);
 void	rewind(t_dlist **stack_to_rewind);

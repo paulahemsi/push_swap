@@ -105,6 +105,6 @@ command  | action |
 
 * 07/06: The basics of the new sorting logic was implemented and is working! It's much better than the last one with 100 numbers, but still pretty inefficient with 500.
 
-* 08/06: The new function to reduce the total amount of instructions by replacing matching neighbors ("ra" and "rb" or "rra" and "rrb" or "sa" or "sb") for their joined versions ("rr", "rrr", "ss") is implemented.
+* 08/06: The new function to reduce the total amount of instructions by replacing matching neighbors ("ra" and "rb" or "rra" and "rrb" or "sa" or "sb") for their joined versions ("rr", "rrr", "ss") is implemented
 
-* 09/06: Yesterday I added a function to decide what rotation to make (normal or reverse) and it made a huge difference in the efficience of the code, but it also introduce some more bugs that I'm trying to fix.
+* 09/06: Yesterday I added a function to decide what rotation to make (normal or reverse) and it made a huge difference in the efficience of the code, but it also introduce some more bugs that I'm trying to fix. Hours later, the bugs are fixed, the code is much more efficient and three quarters of the files are in the norme :)

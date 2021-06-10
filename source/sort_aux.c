@@ -12,12 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-int	define_three_quarters_index(int bigger_index, int smallest_index)
-{
-	return (smallest_index + ((bigger_index - smallest_index) / 2));
-}
-
-int	define_mid_index(int bigger_index, int smallest_index)
+int	find_mid_index(int bigger_index, int smallest_index)
 {
 	return (smallest_index + ((bigger_index - smallest_index) / 2));
 }

@@ -41,7 +41,8 @@ void	swap(t_dlist **stack, t_list **instr, char id)
 		add_instruction(instr, "sb\n");
 }
 
-void	push(t_dlist **origin_stack, t_dlist **dest_stack, t_list **instr, char id)
+void	push(t_dlist **origin_stack, t_dlist **dest_stack,
+		t_list **instr, char id)
 {
 	t_dlist	*origin;
 	t_dlist	*dest;

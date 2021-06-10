@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-static int partition(int *array, int left, int right)
+static int	partition(int *array, int left, int right)
 {
 	int	i;
 	int	j;
@@ -28,13 +28,13 @@ static int partition(int *array, int left, int right)
 		{
 			i++;
 			temp = array[j];
-			array[j] = array[i]; 
+			array[j] = array[i];
 			array[i] = temp;
 		}
 		j++;
 	}
 	temp = array[left];
-	array[left] = array[i]; 
+	array[left] = array[i];
 	array[i] = temp;
 	return (i);
 }

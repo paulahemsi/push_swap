@@ -59,10 +59,7 @@ void	lets_sort(t_stack *stack, t_aux *aux)
 	else
 	{
 		send_half_to_b(stack, aux);
-		//debug(stack->a, stack->b);
 		return_half_to_a(stack, aux, aux->b.higher_index);
-		//debug(stack->a, stack->b);
-		
 	}
 	lets_sort(stack, aux);
 }

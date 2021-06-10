@@ -47,7 +47,6 @@ static void	order_b(t_stack *stack)
 		return ;
 	if (stack->b->next->next == NULL)
 	{
-		
 		if (stack->b->content < stack->b->next->content)
 		{
 			swap(&stack->b, &stack->instr, 'b');

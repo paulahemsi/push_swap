@@ -58,7 +58,8 @@ static void	init_aux(t_dlist *stack_a, t_aux *aux, int argc)
 	aux->ordered_array = fill_ordered_array(stack_a, aux->total_num);
 	aux->a.higher_index = aux->total_num - 1;
 	aux->a.next_index_to_sort = 0;
-	aux->a.mid_index = define_mid_index(aux->a.higher_index, aux->a.next_index_to_sort);
+	aux->a.mid_index = find_mid_index(aux->a.higher_index,
+			aux->a.next_index_to_sort);
 }
 
 void	init(t_stack *stack, t_aux *aux, int argc, char **argv)
