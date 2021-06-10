@@ -7,6 +7,7 @@
 * [Usage](#usage)
 * [Step by step](#step_by_step)
 * [Study resources](#study_resources)
+* [tools](#tools)
 * [Work Diary](#work_diary)
 
 ## introduction
@@ -63,7 +64,10 @@ command  | action |
 * [how big_O notation works– explained with cake](https://www.freecodecamp.org/news/big-o-notation/) by [Cedd Burge](https://www.freecodecamp.org/news/author/cedd/)
 * [the quicksort sorting algorithm video](https://www.youtube.com/watch?v=uXBnyYuwPe8) by [Back To Back SWE](https://www.youtube.com/channel/UCmJz2DV1a3yfgrR7GqRtUUA)
 * [quick sort -ptbr](https://joaoarthurbm.github.io/eda/posts/quick-sort/) by João Arthur Brunet
+
+## tools
 * [push_swap tester](https://github.com/laisarena/push_swap_tester) by [Lais Arena](https://github.com/laisarena)
+* [push swap visualizer](https://github.com/o-reo/push_swap_visualizer) by [o-reo](https://github.com/o-reo)
 
 ## work_diary
 
