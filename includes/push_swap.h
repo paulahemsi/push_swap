@@ -17,28 +17,28 @@
 
 # define LAST_CHUNCK	10
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	t_dlist		*a;
 	t_dlist		*b;
 	t_list		*instr;
 }				t_stack;
 
-typedef struct	s_stack_aux_a
+typedef struct s_stack_aux_a
 {
 	int			mid_index;
 	int			higher_index;
 	int			next_index_to_sort;
 }				t_stack_aux_a;
 
-typedef struct	s_stack_aux_b
+typedef struct s_stack_aux_b
 {
 	int			mid_index;
 	int			higher_index;
 	int			lower_index;
 }				t_stack_aux_b;
 
-typedef struct	s_aux
+typedef struct s_aux
 {
 	int				*ordered_array;
 	int				total_num;
@@ -68,7 +68,9 @@ void	small_sort(t_stack *stack, t_aux *aux, int total_numbers);
 int		any_small_in_stack_a(t_dlist *stack_a, t_aux *aux);
 void	send_half_to_b(t_stack *stack, t_aux *aux);
 void	return_half_to_a(t_stack *stack, t_aux *aux, int limit);
-//void	order_a(t_stack *stack, t_aux *aux);
+void	start_sorting(t_stack *stack, t_aux *aux);
+void	finish_sorting(t_stack *stack, t_aux *aux);
+void	order_a(t_stack *stack, t_aux *aux);
 /*
 ** aux
 */
@@ -78,15 +80,12 @@ int		find_mid_index(int bigger_index, int smallest_index);
 int		reverse_rotation_is_quicker(t_dlist *stack, int target_number);
 //void	define_values(t_stack *stack, t_aux *aux);
 // int		reverse_rotation_is_quicker_two_nums(t_dlist *stack, int first_num, int second_num);
-int		reverse_rotation_is_quicker_multi_nums(t_dlist *stack, int first_num, t_aux *aux);
+int		rr_is_quick_mult(t_dlist *stack, int first_num, t_aux *aux);
 void	rewind(t_dlist **stack_to_rewind);
 void	fast_forward(t_dlist **stack_to_fast_forward);
 void	reduce_instructions(t_list **instructions);
 int		is_full(t_dlist *stack, int total_numbers);
 int		is_sorted(t_dlist *stack);
-
-
-
-void	debug(t_dlist *stack_a, t_dlist *stack_b);
+int		last_num_index(t_dlist *stack);
 
 #endif
