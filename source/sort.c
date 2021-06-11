@@ -54,7 +54,7 @@ void	lets_sort(t_stack *stack, t_aux *aux)
 {
 	if (is_sorted(stack->a) && is_full(stack->a, aux->total_num))
 		return ;
-	if (ft_dlstsize(stack->a) < LAST_CHUNCK)
+	if (ft_dlstsize(stack->a) <= 5)
 		small_sort(stack, aux, ft_dlstsize(stack->a));
 	else
 	{
