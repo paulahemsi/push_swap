@@ -22,9 +22,7 @@ void	ft_dlstiter(t_dlist *lst, void (*f)(int))
 	while (aux != NULL)
 	{
 		f(aux->content);
-		//!tirar:
 		ft_putchar('\n');
-		//!
 		aux = aux->next;
 	}
 }
@@ -41,10 +39,7 @@ void	ft_dlstiter_reverse(t_dlist *lst, void (*f)(int))
 	while (aux != NULL)
 	{
 		f(aux->content);
-		//!tirar:
 		ft_putchar('\n');
-		//!
 		aux = aux->previous;
 	}
 }
-

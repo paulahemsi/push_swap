@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-# include <stdio.h>
 
 static int	atoi_isspace(int c)
 {
@@ -26,7 +25,7 @@ static int	atoi_isspace(int c)
 double	ft_atoi(const char *nptr)
 {
 	double	number;
-	int	sign;
+	int		sign;
 
 	number = 0;
 	sign = 1;

@@ -59,7 +59,7 @@ void	init_stack_a(int argc, char **argv, t_dlist	**stack_a);
 void	swap(t_dlist **stack, t_list **instr, char id);
 void	rotate(t_dlist **stack, t_list **instr, char id);
 void	reverse_rotate(t_dlist **stack, t_list **instr, char id);
-void	push(t_dlist **origin_stack, t_dlist **dest_stack, t_list **instr, char id);
+void	push(t_dlist **origin, t_dlist **dest, t_list **instr, char id);
 /*
 ** sorting
 */
@@ -78,8 +78,6 @@ void	quick_sort(int *array, int left, int right);
 int		find_mid_index(int bigger_index, int smallest_index);
 int		find_mid_index(int bigger_index, int smallest_index);
 int		reverse_rotation_is_quicker(t_dlist *stack, int target_number);
-//void	define_values(t_stack *stack, t_aux *aux);
-// int		reverse_rotation_is_quicker_two_nums(t_dlist *stack, int first_num, int second_num);
 int		rr_is_quick_mult(t_dlist *stack, int first_num, t_aux *aux);
 void	rewind(t_dlist **stack_to_rewind);
 void	fast_forward(t_dlist **stack_to_fast_forward);

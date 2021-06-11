@@ -34,15 +34,19 @@ $(LIBFT):
 $(OBJECTS): $(FILES)
 	$(CC) $(CFLAGS) -g -c $(FILES)
 
-objects_no_warnings : $(FILES)
-	$(CC) -g -c $(FILES)
+test: $(NAME)
+	cp ./tools/checker_linux .
+	bash ./tools/tester.sh
 
-no_warnings: objects_no_warnings $(LIBFT)
-	$(CC) -o $(NAME) $(OBJECTS) -L $(LIBFT_PATH) -lft
+visual: $(NAME)
+	cp ./tools/pyviz.py .
+	python3 pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"`
 
 clean:
 	make -C $(LIBFT_PATH) fclean
 	$(RM) $(OBJECTS) $(BONUS_OBJECTS)
+	$(RM) checker_linux
+	$(RM) pyviz.py
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean

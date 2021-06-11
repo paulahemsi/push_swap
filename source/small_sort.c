@@ -29,6 +29,7 @@ static void	sort_three(t_stack *stack, int *first, int *second, int *last)
 		|| (*first > *second && *last < *second && *first > *last)
 		|| (*first < *second && *last < *second && *first < *last))
 		swap(&stack->a, &stack->instr, 'a');
+	define_numbers(first, second, last, stack->a);
 	if (*first > *second && *last > *second && *first > *last)
 		rotate(&stack->a, &stack->instr, 'a');
 	if (*first < *second && *last < *second && *first > *last)
@@ -51,7 +52,7 @@ static void	return_to_a(t_stack *stack)
 
 static void	send_to_b(t_stack *stack, t_aux *aux, int total_numbers)
 {
-	if (ft_dlstsize(stack->a) > 3)
+	if (ft_dlstsize(stack->a) == 3)
 		return ;
 	if (stack->a->index >= 3)
 	{

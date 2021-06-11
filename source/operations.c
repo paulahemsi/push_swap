@@ -12,11 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-void	add_instruction(t_list **instr, char *content)
-{
-	ft_lstadd_back(instr, ft_lstnew(content));
-}
-
 void	swap(t_dlist **stack, t_list **instr, char id)
 {
 	t_dlist	*first;
@@ -36,9 +31,21 @@ void	swap(t_dlist **stack, t_list **instr, char id)
 	second->previous = NULL;
 	*stack = second;
 	if (id == 'a')
-		add_instruction(instr, "sa\n");
+		ft_lstadd_back(instr, ft_lstnew("sa\n"));
 	else
-		add_instruction(instr, "sb\n");
+		ft_lstadd_back(instr, ft_lstnew("sb\n"));
+}
+
+static void	init_empty_stack(t_dlist *dest, t_list **instr,
+		t_dlist **dest_stack, char id)
+{
+	dest->next = NULL;
+	dest->previous = NULL;
+	*dest_stack = dest;
+	if (id == 'a')
+		ft_lstadd_back(instr, ft_lstnew("pa\n"));
+	else
+		ft_lstadd_back(instr, ft_lstnew("pb\n"));
 }
 
 void	push(t_dlist **origin_stack, t_dlist **dest_stack,
@@ -59,24 +66,14 @@ void	push(t_dlist **origin_stack, t_dlist **dest_stack,
 		origin->next->previous = NULL;
 	}
 	if (dest == NULL)
-	{
-		dest = origin;
-		dest->next = NULL;
-		dest->previous = NULL;
-		*dest_stack = dest;
-		if (id == 'a')
-			add_instruction(instr, "pa\n");
-		else
-			add_instruction(instr, "pb\n");
-		return ;
-	}
+		return (init_empty_stack(origin, instr, dest_stack, id));
 	dest->previous = origin;
 	origin->next = dest;
 	*dest_stack = dest->previous;
 	if (id == 'a')
-		add_instruction(instr, "pa\n");
+		ft_lstadd_back(instr, ft_lstnew("pa\n"));
 	else
-		add_instruction(instr, "pb\n");
+		ft_lstadd_back(instr, ft_lstnew("pb\n"));
 }
 
 /*
@@ -101,9 +98,9 @@ void	rotate(t_dlist **stack, t_list **instr, char id)
 	first->previous = last;
 	first->next = NULL;
 	if (id == 'a')
-		add_instruction(instr, "ra\n");
+		ft_lstadd_back(instr, ft_lstnew("ra\n"));
 	else
-		add_instruction(instr, "rb\n");
+		ft_lstadd_back(instr, ft_lstnew("rb\n"));
 }
 
 /*
@@ -126,7 +123,7 @@ void	reverse_rotate(t_dlist **stack, t_list **instr, char id)
 	last->previous = NULL;
 	*stack = last;
 	if (id == 'a')
-		add_instruction(instr, "rra\n");
+		ft_lstadd_back(instr, ft_lstnew("rra\n"));
 	else
-		add_instruction(instr, "rrb\n");
+		ft_lstadd_back(instr, ft_lstnew("rrb\n"));
 }
