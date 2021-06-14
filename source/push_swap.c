@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/14 16:35:25 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 16:58:28 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static char	**check_string(int *argc, char **argv)
 	int	i;
 
 	i = 0;
+	if (!(argv[0][0]))
+		exit(0);
 	argv = ft_split(argv[0], ' ');
 	while (argv[i] != NULL)
 		i++;
@@ -72,7 +74,7 @@ int	main (int argc, char **argv)
 	t_aux	aux;
 
 	if (argc == 1)
-		return_error();
+		return (0);
 	argv = &argv[1];
 	argc--;
 	if (argc == 1)
