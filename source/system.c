@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:18:29 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 14:59:34 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 09:10:15 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	return_error(void)
 {
-	ft_putendl("Error");
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
 
