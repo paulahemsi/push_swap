@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/14 15:02:49 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 15:22:38 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ static void	check_if_arg_are_integer(char **argv, int i)
 
 	j = 0;
 	if (argv[i][j] == '-')
+	{
 		j++;
+		if (!argv[i][j])
+			return_error();
+	}
 	while (argv[i][j])
 	{
 		if (!(ft_isdigit(argv[i][j])))
