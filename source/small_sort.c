@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 13:04:08 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/14 14:37:28 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 17:25:33 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,12 @@ static void	return_to_a(t_stack *stack)
 {
 	if (!stack->b)
 		return ;
-	if (stack->b->index == (last_num_index(stack->a) + 1))
-	{
-		push(&stack->b, &stack->a, &stack->instr, 'a');
-		rotate(&stack->a, &stack->instr, 'a');
-	}
-	else
-		swap(&stack->b, &stack->instr, 'b');
+	if (stack->b->next)
+		if (stack->b->index < stack->b->next->index)
+			swap(&stack->b, &stack->instr, 'b');
+	push(&stack->b, &stack->a, &stack->instr, 'a');
+	if (stack->a->index > stack->a->next->index)
+		swap(&stack->a, &stack->instr, 'a');
 	return_to_a(stack);
 }
 
@@ -54,13 +53,11 @@ static void	send_to_b(t_stack *stack, t_aux *aux, int total_numbers)
 {
 	if (ft_dlstsize(stack->a) == 3)
 		return ;
-	if (stack->a->index >= 3)
+	if ((stack->a->index == 0) || (stack->a->index == 1))
 	{
 		aux->a.higher_index--;
 		push(&stack->a, &stack->b, &stack->instr, 'b');
 	}
-	else if (reverse_rotation_is_quicker(stack->a, (aux->a.higher_index)))
-		reverse_rotate(&stack->a, &stack->instr, 'a');
 	else
 		rotate(&stack->a, &stack->instr, 'a');
 	send_to_b(stack, aux, total_numbers);
