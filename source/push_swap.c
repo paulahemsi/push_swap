@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/14 16:23:37 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 16:35:25 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main (int argc, char **argv)
 	t_aux	aux;
 
 	if (argc == 1)
-		return (0);
+		return_error();
 	argv = &argv[1];
 	argc--;
 	if (argc == 1)
