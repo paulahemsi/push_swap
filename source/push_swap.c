@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/09 17:46:02 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 15:02:49 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ static void	check_if_arg_are_integer(char **argv, int i)
 	number = ft_atoi(argv[i]);
 	if (number > INT_MAX || number < INT_MIN)
 		return_error();
+}
+
+static char	**check_string(int *argc, char **argv)
+{
+	int i;
+	
+	i = 0;
+	argv = ft_split(argv[0], ' ');
+	while (argv[i] != NULL)
+		i++;
+	*argc = i;
+	return (argv);
 }
 
 static void	check_args(int argc, char **argv)
@@ -58,6 +70,10 @@ int	main (int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
+	argv = &argv[1];
+	argc--;
+	if (argc == 1)
+		argv = check_string(&argc, argv);
 	check_args(argc, argv);
 	init_stacks(&stack);
 	init(&stack, &aux, argc, argv);

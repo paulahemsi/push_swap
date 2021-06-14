@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 19:05:07 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 15:11:49 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 15:07:31 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_stack_a(int argc, char **argv, t_dlist	**stack_a)
 	int	number;
 	int	i;
 
-	i = 1;
+	i = 0;
 	number = (int)ft_atoi(argv[i]);
 	*stack_a = ft_dlstnew(number);
 	while (i < (argc - 1))

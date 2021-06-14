@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 13:04:08 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/09 17:24:18 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 14:37:28 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ void	small_sort(t_stack *stack, t_aux *aux, int total_numbers)
 	(void)aux;
 	if (is_sorted(stack->a) && is_full(stack->a, total_numbers))
 		return ;
+	if (ft_dlstsize(stack->a) == 2)
+	{
+		swap(&stack->a, &stack->instr, 'a');
+		return ;
+	}
 	if (ft_dlstsize(stack->a) == 3)
 	{
 		define_numbers(&first, &second, &last, stack->a);

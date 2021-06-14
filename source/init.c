@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 18:57:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/06 15:48:33 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 15:19:14 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static int	*fill_ordered_array(t_dlist *stack_a, int total)
 	int	*ordered_array;
 	int	i;
 
-	ordered_array = (int *)malloc(total * sizeof(int));
+	ordered_array = (int *)malloc((total) * sizeof(int));
 	if (!ordered_array)
 		return_error();
 	i = 0;
-	while (i < total)
+	while (i < (total))
 	{
 		ordered_array[i] = stack_a->content;
 		i++;
@@ -54,7 +54,7 @@ static void	fill_stack_indexes(t_stack *stack, t_aux *aux)
 static void	init_aux(t_dlist *stack_a, t_aux *aux, int argc)
 {
 	ft_memset(aux, 0, sizeof(*aux));
-	aux->total_num = argc - 1;
+	aux->total_num = argc;
 	aux->ordered_array = fill_ordered_array(stack_a, aux->total_num);
 	aux->a.higher_index = aux->total_num - 1;
 	aux->a.next_index_to_sort = 0;
