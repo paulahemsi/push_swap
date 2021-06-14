@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/05 21:18:02 by phemsi-a          #+#    #+#              #
-#    Updated: 2021/06/14 15:00:38 by phemsi-a         ###   ########.fr        #
+#    Updated: 2021/06/14 15:58:52 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = push_swap
 LIBFT = libft.a
 
 LIBFT_PATH = ./libraries/libft/
+INCLUDES = ./includes
 
 SRC = ./source/
 
@@ -25,11 +26,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) -L $(LIBFT_PATH) -lft
-
-$(LIBFT):
+$(NAME): $(OBJECTS)
 	make -C $(LIBFT_PATH) $(LIBFT)
+	$(CC) $(CFLAGS) -I $(INCLUDES) -o $(NAME) $(OBJECTS) -L $(LIBFT_PATH) -lft
 
 $(OBJECTS): $(FILES)
 	$(CC) $(CFLAGS) -g -c $(FILES)

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/14 15:22:38 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 16:06:30 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static void	init_stacks(t_stack *stack)
 	stack->instr = NULL;
 }
 
-//TODO opção da lista vir em string
 int	main (int argc, char **argv)
 {
 	t_stack	stack;
