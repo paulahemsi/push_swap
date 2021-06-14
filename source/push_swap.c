@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 20:37:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/06/14 16:06:30 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/06/14 16:09:37 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void	check_if_arg_are_integer(char **argv, int i)
 
 static char	**check_string(int *argc, char **argv)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	argv = ft_split(argv[0], ' ');
 	while (argv[i] != NULL)
