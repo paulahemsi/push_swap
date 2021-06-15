@@ -5,6 +5,7 @@
 
 * [Introduction](#introduction)
 * [Usage](#usage)
+* [My_algorithm](#my_algorithm)
 * [Step by step](#step_by_step)
 * [Study resources](#study_resources)
 * [tools](#tools)
@@ -42,6 +43,36 @@ command  | action |
 
 ## usage
 
+`git clone https://github.com/paulahemsi/push_swap.git`
+
+`cd push_swap`
+
+`make`
+
+`./pushswap <numbers to be sorted>`
+
+Numbers can be passed:
+
+* as single arguments `./push_swap 1 3 7 4 2`
+* as a string `./push_swap "1 3 7 4 2"` 
+* as an environment variable `ARG="1 3 7 4 2"; ./push_swap $ARG`
+
+
+## my_algorithm
+
+![](./study_resources/push_swap_visualizer.gif)
+
+In order to sort the stack, I took the opportunity to practice recursion(:sparkling_heart:) in all possible functions and developed this algorithm inspired by quick sort:
+
+* find stack_a middle number
+* push the smallest number's from stack_a to stack_b
+* push back from stack_b to stack_a following this rule:
+  * if the number is part of stack_b higher-half, push to a
+  * if the number is the next one in order to be sorted, push to stack_a and rotate stack_a
+* when all the numbers are back in stack_a, repeat the processe until this first half is sorted
+* find stack_a-still-messy middle number and repeat the process
+* repeat the algorithm until stack_a is completely full and sorted
+
 ## step_by_step
 
 * to better visualize the instructions we have available, I first built the [push_swap_simulator](https://phemsi-a.itch.io/push-swap)
@@ -71,8 +102,11 @@ command  | action |
 * [quick sort -ptbr](https://joaoarthurbm.github.io/eda/posts/quick-sort/) by João Arthur Brunet
 
 ## tools
-* [push_swap tester](https://github.com/laisarena/push_swap_tester) by [Lais Arena](https://github.com/laisarena)
 * [push swap visualizer](https://github.com/o-reo/push_swap_visualizer) by [o-reo](https://github.com/o-reo)
+* [push swap simulator](https://phemsi-a.itch.io/push-swap) by me
+* [push_swap tester](https://github.com/laisarena/push_swap_tester) by [Lais Arena](https://github.com/laisarena)
+* [push swap tester](https://github.com/LeoFu9487/push_swap_tester) by [LeoFu](https://github.com/LeoFu9487)
+
 
 ## work_diary
 
@@ -118,4 +152,6 @@ command  | action |
 
 * 09/06: Yesterday I added a function to decide what rotation to make (normal or reverse) and it made a huge difference in the efficience of the code, but it also introduce some more bugs that I'm trying to fix. Hours later, the bugs are fixed, the code is much more efficient and three quarters of the files are in the norme :)
 
-* 10/06: All project is in the norme and the algorithm's efficience is pretty good! 
+* 10/06: All project is in the norme and the algorithm's efficience is pretty good!
+
+* 11/06: Small numbers sorting algorithm optimized, makefile without relink and project approved! :star2:
