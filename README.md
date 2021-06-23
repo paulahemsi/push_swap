@@ -65,12 +65,12 @@ Numbers can be passed:
 In order to sort the stack, I took the opportunity to practice recursion(:sparkling_heart:) in all possible functions and developed this algorithm inspired by quick sort:
 
 * find stack_a middle number
-* push the smallest number's from stack_a to stack_b
+* push the smallest numbers from stack_a to stack_b
 * push back from stack_b to stack_a following this rule:
-  * if the number is part of stack_b higher-half, push to a
+  * if the number is part of stack_b higher-half, push to stack_a
   * if the number is the next one in order to be sorted, push to stack_a and rotate stack_a
-* when all the numbers are back in stack_a, repeat the processe until this first half is sorted
-* find stack_a-still-messy middle number and repeat the process
+* when all the numbers are back in stack_a, repeat the process until this first half is sorted
+* find still-messy-stack_a-middle-number and repeat the process
 * repeat the algorithm until stack_a is completely full and sorted
 
 ## step_by_step
@@ -93,7 +93,7 @@ In order to sort the stack, I took the opportunity to practice recursion(:sparkl
 
 * changing the algorithm to make it more efficient
 
-* lasts adjustings to the norme
+* lasts adjustments to the norme
 
 ## study_resources
 
