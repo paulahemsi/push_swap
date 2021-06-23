@@ -150,8 +150,8 @@ In order to sort the stack, I took the opportunity to practice recursion(:sparkl
 
 * 08/06: The new function to reduce the total amount of instructions by replacing matching neighbors ("ra" and "rb" or "rra" and "rrb" or "sa" or "sb") for their joined versions ("rr", "rrr", "ss") is implemented
 
-* 09/06: Yesterday I added a function to decide what rotation to make (normal or reverse) and it made a huge difference in the efficience of the code, but it also introduce some more bugs that I'm trying to fix. Hours later, the bugs are fixed, the code is much more efficient and three quarters of the files are in the norme :)
+* 09/06: Yesterday I added a function to decide which rotation to make (normal or reverse) and it made a huge difference in the efficiency of the code, but it also introduced some more bugs that I'm trying to fix. Hours later, the bugs are fixed, the code is much more efficient and three quarters of the files are in the norme :)
 
-* 10/06: All project is in the norme and the algorithm's efficience is pretty good!
+* 10/06: All the project is in the norme and the algorithm's efficiency is pretty good!
 
 * 11/06: Small numbers sorting algorithm optimized, makefile without relink and project approved! :star2:
