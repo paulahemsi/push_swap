@@ -1,8 +1,6 @@
 # push_swap
  simple and highly effective algorithm project | école 42
 
-*in process*
-
 * [Introduction](#introduction)
 * [Usage](#usage)
 * [My_algorithm](#my_algorithm)
